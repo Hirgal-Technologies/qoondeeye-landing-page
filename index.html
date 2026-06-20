@@ -153,6 +153,12 @@
         .mobile-menu-panel.open {
             transform: translateX(0);
         }
+        @media (max-width: 767px) {
+            .mobile-menu-panel:not(.open),
+            .mobile-menu-overlay:not(.open) {
+                display: none;
+            }
+        }
         .hero-gradient {
             background: radial-gradient(circle at 50% 0%, #E0F2FF 0%, #f8fafb 60%);
         }
@@ -195,7 +201,7 @@
         .cta-final-card {
             padding: 32px 20px;
             border-radius: 36px;
-            overflow: visible;
+            overflow: hidden;
         }
         .cta-final-desc {
             font-size: clamp(15px, 4vw, 18px);
@@ -292,6 +298,7 @@
             justify-content: center;
             align-items: center;
             perspective: 1000px;
+            overflow: hidden;
         }
         @media (min-width: 768px) {
             .mockup-carousel-container { height: 750px; }
@@ -590,8 +597,8 @@
 </div>
 </section>
 <!-- Features Bento Grid -->
-<section class="py-section-gap px-margin-mobile md:px-margin-desktop" id="features">
-<div class="max-w-container-max mx-auto"><div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop overflow-hidden relative" id="features">
+<div class="max-w-container-max mx-auto relative overflow-hidden"><div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Main Feature -->
 <div class="md:col-span-2 premium-glass-card p-12 rounded-4xl ambient-shadow border border-white/40 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden bg-white/40">
