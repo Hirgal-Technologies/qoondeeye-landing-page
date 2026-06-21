@@ -301,7 +301,60 @@
             overflow: hidden;
         }
         @media (min-width: 768px) {
-            .mockup-carousel-container { height: 750px; }
+            .mockup-carousel-container {
+                height: 750px;
+                overflow: visible;
+            }
+        }
+        .hero-visual-column {
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .hero-visual-column {
+                overflow: visible;
+            }
+        }
+        .hero-carousel-arrow {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 100%;
+        }
+        @media (min-width: 1024px) {
+            .hero-cta-group {
+                flex-direction: row;
+                align-items: center;
+                gap: 2rem;
+                width: auto;
+                max-width: none;
+            }
+        }
+        .hero-play-btn {
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+        @media (max-width: 767px) {
+            .hero-play-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+        .hero-social-proof {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        @media (max-width: 1023px) {
+            .hero-social-proof {
+                justify-content: center;
+            }
         }
 
         .phone-slide {
@@ -418,7 +471,7 @@
 </aside>
 <main>
 <!-- Hero Section -->
-<section class="hero-gradient pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop overflow-hidden">
+<section class="hero-gradient pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop">
 <div class="max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
 <div class="w-full lg:w-5/12 text-center lg:text-left z-10">
 <div class="inline-flex items-center gap-2 bg-primary-fixed/30 text-on-primary-fixed-variant px-4 py-1.5 rounded-full mb-6">
@@ -431,32 +484,32 @@
 <p class="font-body-lg text-body-lg text-secondary mb-10 max-w-xl mx-auto lg:mx-0">
                     Qoondeeye tracks your EVC Plus, eDahab, and Salaam Bank transactions instantly via smart SMS detection. No manual typing, just pure financial clarity.
                 </p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-<a class="bg-[#000000] text-white flex items-center gap-3 px-8 py-4 rounded-2xl hover:scale-105 transition-all shadow-xl" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">
+<div class="hero-cta-group justify-center lg:justify-start">
+<a class="hero-play-btn bg-[#000000] text-white flex items-center gap-3 px-8 py-4 rounded-2xl hover:scale-105 transition-all shadow-xl shrink-0" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">
 <span class="material-symbols-outlined text-4xl">play_store</span>
 <div class="text-left">
 <p class="text-[10px] leading-none uppercase">Get it on</p>
 <p class="text-lg font-bold leading-none">Google Play</p>
 </div>
 </a>
-<div class="flex items-center gap-3 px-4">
-<div class="flex -space-x-2">
+<div class="hero-social-proof">
+<div class="flex -space-x-2 shrink-0">
 <div class="w-8 h-8 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-bold">AJ</div>
 <div class="w-8 h-8 rounded-full border-2 border-white bg-green-100 flex items-center justify-center text-[10px] font-bold">HM</div>
 <div class="w-8 h-8 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center text-[10px] font-bold">SH</div>
 </div>
-<p class="text-sm font-bold text-secondary">Join Somali users today</p>
+<p class="text-sm font-bold text-secondary whitespace-nowrap">Join Somali users today</p>
 </div>
 </div>
 </div>
-<div class="w-full lg:w-7/12 relative mt-12 lg:mt-0 flex flex-col items-center">
+<div class="w-full lg:w-7/12 relative mt-12 lg:mt-0 flex flex-col items-center hero-visual-column">
 <!-- Phone Carousel Wrapper -->
 <div class="mockup-carousel-container" id="mockup-carousel">
 <!-- Navigation Arrows (Desktop) -->
-<button class="hidden md:flex absolute left-0 z-40 w-12 h-12 bg-white/50 hover:bg-white rounded-full items-center justify-center glass-card border-none -translate-x-1/2" id="prev-btn">
+<button class="hidden md:flex hero-carousel-arrow absolute left-6 lg:left-10 z-40 w-12 h-12 bg-white/50 hover:bg-white rounded-full items-center justify-center glass-card border-none" id="prev-btn">
 <span class="material-symbols-outlined text-primary">arrow_back_ios_new</span>
 </button>
-<button class="hidden md:flex absolute right-0 z-40 w-12 h-12 bg-white/50 hover:bg-white rounded-full items-center justify-center glass-card border-none translate-x-1/2" id="next-btn">
+<button class="hidden md:flex hero-carousel-arrow absolute right-6 lg:right-10 z-40 w-12 h-12 bg-white/50 hover:bg-white rounded-full items-center justify-center glass-card border-none" id="next-btn">
 <span class="material-symbols-outlined text-primary">arrow_forward_ios</span>
 </button>
 <!-- Slide 1: Dashboard -->
@@ -478,7 +531,7 @@
 </div>
 </div>
 <!-- Floating Glass Cards (Bound to center slide logic) -->
-<div class="absolute -left-16 top-10 glass-card p-4 rounded-2xl w-48 animate-bounce transition-all hidden md:block z-50 pointer-events-none" id="hero-card-sms">
+<div class="absolute left-2 md:left-6 top-10 glass-card p-4 rounded-2xl w-48 animate-bounce transition-all hidden md:block z-50 pointer-events-none" id="hero-card-sms">
 <div class="flex items-center gap-3">
 <div class="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center">
 <span class="material-symbols-outlined text-green-600 text-sm">sms</span>
@@ -486,7 +539,7 @@
 <p class="text-[11px] font-bold leading-tight">EVC Plus transaction imported</p>
 </div>
 </div>
-<div class="absolute -right-20 top-1/3 glass-card p-4 rounded-2xl w-52 hidden md:block z-50 pointer-events-none" id="hero-card-category">
+<div class="absolute right-2 md:right-6 top-1/3 glass-card p-4 rounded-2xl w-52 hidden md:block z-50 pointer-events-none" id="hero-card-category">
 <div class="flex items-center gap-3">
 <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center">
 <span class="material-symbols-outlined text-blue-600 text-sm">category</span>
@@ -565,7 +618,7 @@
 </div>
 </section>
 <!-- See Qoondeeye in Action -->
-<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low overflow-hidden">
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white overflow-hidden">
 <div class="max-w-container-max mx-auto">
 <div class="text-center mb-16">
 <h2 class="font-headline-md text-primary mb-4">See Qoondeeye in Action</h2>
@@ -597,11 +650,11 @@
 </div>
 </section>
 <!-- Features Bento Grid -->
-<section class="py-section-gap px-margin-mobile md:px-margin-desktop overflow-hidden relative" id="features">
-<div class="max-w-container-max mx-auto relative overflow-hidden"><div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop relative" id="features">
+<div class="max-w-container-max mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Main Feature -->
-<div class="md:col-span-2 premium-glass-card p-12 rounded-4xl ambient-shadow border border-white/40 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden bg-white/40">
+<div class="md:col-span-2 bg-white p-12 rounded-4xl ambient-shadow border border-outline-variant/30 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
 <div class="md:w-1/2">
 <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
 <span class="material-symbols-outlined text-primary text-4xl">sms</span>
