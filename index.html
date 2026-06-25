@@ -18,7 +18,6 @@
 <meta content="https://raw.githubusercontent.com/Hirgal-Technologies/qoondeeye-landing-page/main/assets/app-icon.png" name="twitter:image"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <!-- Tailwind Configuration -->
 <script id="tailwind-config">
       tailwind.config = {
@@ -94,12 +93,12 @@
                     "container-max": "1280px"
             },
             "fontFamily": {
-                    "body-md": ["Manrope"],
-                    "display-lg": ["Manrope"],
-                    "body-lg": ["Manrope"],
-                    "label-md": ["Manrope"],
-                    "display-lg-mobile": ["Manrope"],
-                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "display-lg": ["Manrope", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "body-lg": ["Manrope", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "label-md": ["Manrope", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "display-lg-mobile": ["Manrope", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                    "headline-md": ["Manrope", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
                     "headline-sm": ["Manrope"]
             },
             "fontSize": {
@@ -116,6 +115,22 @@
       }
     </script>
 <style>
+        body {
+            font-family: Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .ui-icon {
+            display: block;
+            flex-shrink: 0;
+        }
+        .ui-icon-xs { width: 0.75rem; height: 0.75rem; }
+        .ui-icon-sm { width: 1rem; height: 1rem; }
+        .ui-icon-md { width: 1.125rem; height: 1.125rem; }
+        .ui-icon-lg { width: 1.5rem; height: 1.5rem; }
+        .ui-icon-xl { width: 2.25rem; height: 2.25rem; }
+        .ui-icon-2xl { width: 1.875rem; height: 1.875rem; }
+        .ui-icon-hero { width: 10rem; height: 10rem; }
+        .ui-icon-stroke { fill: none; stroke: currentColor; }
+        .ui-icon-fill { fill: currentColor; stroke: none; }
         .glass-nav {
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -184,7 +199,7 @@
             left: 50%;
             bottom: -0.18em;
             transform: translateX(-50%);
-            font-family: "Manrope", sans-serif;
+            font-family: Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             font-weight: 800;
             letter-spacing: -0.03em;
             font-size: clamp(4.5rem, 16vw, 14rem);
@@ -489,6 +504,79 @@
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+  </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+  </symbol>
+  <symbol id="icon-badge-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/>
+  </symbol>
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15 18-6-6 6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m9 18 6-6-6-6"/>
+  </symbol>
+  <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m6 9 6 6 6-6"/>
+  </symbol>
+  <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </symbol>
+  <symbol id="icon-tags" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m15 5 4 4"/><path d="M8.5 8.5 3 14v4h4l5.5-5.5"/><circle cx="9.5" cy="9.5" r=".5" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>
+  </symbol>
+  <symbol id="icon-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
+  </symbol>
+  <symbol id="icon-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+  </symbol>
+  <symbol id="icon-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m2 2 20 20"/><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"/><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"/>
+  </symbol>
+  <symbol id="icon-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+  </symbol>
+  <symbol id="icon-landmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>
+  </symbol>
+  <symbol id="icon-shield-check-hero" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2 4 5.75v5.75c0 5.08 3.86 9.84 8 11.02 4.14-1.18 8-5.94 8-11.02V5.75L12 2z"/>
+    <path fill="none" stroke="#ffffff" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" d="m9 12.5 2.25 2.25 5-5"/>
+  </symbol>
+  <symbol id="icon-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>
+  </symbol>
+  <symbol id="icon-lock-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+  </symbol>
+  <symbol id="icon-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+  </symbol>
+  <symbol id="icon-credit-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/>
+  </symbol>
+  <symbol id="icon-piggy-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/><path d="M15.5 8.5c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5S13.2 7 14 7s1.5.7 1.5 1.5Z"/>
+  </symbol>
+  <symbol id="icon-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
+  </symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14"/><path d="M12 5v14"/>
+  </symbol>
+  <symbol id="icon-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+  </symbol>
+</svg>
+
 <!-- Top Navigation Bar -->
 <nav class="fixed top-0 w-full z-50 glass-nav bg-white/70 border-b border-outline-variant/30">
 <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
@@ -504,7 +592,7 @@
 </div>
 <div class="md:hidden">
 <button aria-controls="mobile-menu-panel" aria-expanded="false" aria-label="Open menu" class="text-primary p-1 -mr-1" id="mobile-menu-toggle" type="button">
-<span class="material-symbols-outlined text-3xl" id="mobile-menu-icon">menu</span>
+<svg id="mobile-menu-icon-menu" class="ui-icon ui-icon-2xl ui-icon-stroke text-primary" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-menu"/></svg><svg id="mobile-menu-icon-close" class="ui-icon ui-icon-2xl ui-icon-stroke text-primary hidden" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>
 </button>
 </div>
 </div>
@@ -514,7 +602,7 @@
 <div class="flex items-center justify-between h-20 px-margin-mobile border-b border-outline-variant/30">
 <span class="font-headline-sm text-primary font-extrabold">Menu</span>
 <button aria-label="Close menu" class="text-primary p-1" id="mobile-menu-close" type="button">
-<span class="material-symbols-outlined text-3xl">close</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>
 </button>
 </div>
 <nav class="flex flex-col gap-1 p-6">
@@ -530,7 +618,7 @@
 <div class="max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
 <div class="w-full lg:w-5/12 text-center lg:text-left z-10 hero-content-column">
 <div class="inline-flex items-center gap-2 bg-primary-fixed/30 text-on-primary-fixed-variant px-4 py-1.5 rounded-full mb-6">
-<span class="material-symbols-outlined text-lg">verified</span>
+<svg class="ui-icon ui-icon-md ui-icon-stroke text-lg" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-badge-check"/></svg>
 <span class="font-label-md text-[13px]">Trusted Somali Finance Tracker</span>
 </div>
 <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-stack-md leading-[1.1]">
@@ -565,10 +653,10 @@
 <div class="mockup-carousel-container" id="mockup-carousel">
 <!-- Navigation Arrows (Desktop) -->
 <button class="hidden md:flex hero-carousel-arrow absolute left-6 lg:left-10 z-40 w-12 h-12 bg-white/50 hover:bg-white rounded-full items-center justify-center glass-card border-none" id="prev-btn">
-<span class="material-symbols-outlined text-primary">arrow_back_ios_new</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke text-primary" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-left"/></svg>
 </button>
 <button class="hidden md:flex hero-carousel-arrow absolute right-6 lg:right-10 z-40 w-12 h-12 bg-white/50 hover:bg-white rounded-full items-center justify-center glass-card border-none" id="next-btn">
-<span class="material-symbols-outlined text-primary">arrow_forward_ios</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke text-primary" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
 </button>
 <!-- Slide 1: Dashboard -->
 <div class="phone-slide active" data-index="0">
@@ -592,7 +680,7 @@
 <div class="absolute left-2 md:left-6 top-10 glass-card p-4 rounded-2xl w-48 animate-bounce transition-all hidden md:block z-50 pointer-events-none" id="hero-card-sms">
 <div class="flex items-center gap-3">
 <div class="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-green-600 text-sm">sms</span>
+<svg class="ui-icon ui-icon-sm ui-icon-stroke text-green-600 text-sm" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-message"/></svg>
 </div>
 <p class="text-[11px] font-bold leading-tight">EVC Plus transaction imported</p>
 </div>
@@ -600,7 +688,7 @@
 <div class="absolute right-2 md:right-6 top-1/3 glass-card p-4 rounded-2xl w-52 hidden md:block z-50 pointer-events-none" id="hero-card-category">
 <div class="flex items-center gap-3">
 <div class="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-blue-600 text-sm">category</span>
+<svg class="ui-icon ui-icon-sm ui-icon-stroke text-blue-600 text-sm" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-tags"/></svg>
 </div>
 <p class="text-[11px] font-bold leading-tight">Auto-categorized spending</p>
 </div>
@@ -638,7 +726,7 @@
 <!-- Step 1 -->
 <div class="relative group bg-white/80 backdrop-blur-sm rounded-3xl p-7 border border-white/60 shadow-[0_10px_40px_-15px_rgba(0,51,69,0.15)] hover:-translate-y-1.5 transition-transform duration-300">
 <div class="relative w-14 h-14 rounded-2xl bg-primary text-on-primary flex items-center justify-center mb-6 shadow-lg mx-auto">
-<span class="material-symbols-outlined">download</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke " fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-download"/></svg>
 <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-primary text-xs font-extrabold flex items-center justify-center shadow border border-primary/10">1</span>
 </div>
 <h4 class="font-bold text-lg text-primary mb-2 text-center">Install App</h4>
@@ -647,7 +735,7 @@
 <!-- Step 2 -->
 <div class="relative group bg-white/80 backdrop-blur-sm rounded-3xl p-7 border border-white/60 shadow-[0_10px_40px_-15px_rgba(0,51,69,0.15)] hover:-translate-y-1.5 transition-transform duration-300">
 <div class="relative w-14 h-14 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-6 shadow-lg mx-auto">
-<span class="material-symbols-outlined">sms</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke " fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-message"/></svg>
 <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-primary text-xs font-extrabold flex items-center justify-center shadow border border-primary/10">2</span>
 </div>
 <h4 class="font-bold text-lg text-primary mb-2 text-center">Enable SMS Auto Import</h4>
@@ -656,7 +744,7 @@
 <!-- Step 3 -->
 <div class="relative group bg-white/80 backdrop-blur-sm rounded-3xl p-7 border border-white/60 shadow-[0_10px_40px_-15px_rgba(0,51,69,0.15)] hover:-translate-y-1.5 transition-transform duration-300">
 <div class="relative w-14 h-14 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-6 shadow-lg mx-auto">
-<span class="material-symbols-outlined">account_balance_wallet</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke " fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-wallet"/></svg>
 <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-primary text-xs font-extrabold flex items-center justify-center shadow border border-primary/10">3</span>
 </div>
 <h4 class="font-bold text-lg text-primary mb-2 text-center">Spend Normally</h4>
@@ -665,7 +753,7 @@
 <!-- Step 4 -->
 <div class="relative group bg-white/80 backdrop-blur-sm rounded-3xl p-7 border border-white/60 shadow-[0_10px_40px_-15px_rgba(0,51,69,0.15)] hover:-translate-y-1.5 transition-transform duration-300">
 <div class="relative w-14 h-14 rounded-2xl bg-secondary-container text-primary flex items-center justify-center mb-6 shadow-lg mx-auto">
-<span class="material-symbols-outlined">bar_chart</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke " fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-bar-chart"/></svg>
 <span class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white text-primary text-xs font-extrabold flex items-center justify-center shadow border border-primary/10">4</span>
 </div>
 <h4 class="font-bold text-lg text-primary mb-2 text-center">See Reports</h4>
@@ -715,7 +803,7 @@
 <div class="md:col-span-2 bg-white p-12 rounded-4xl ambient-shadow border border-outline-variant/30 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
 <div class="md:w-1/2">
 <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-primary text-4xl">sms</span>
+<svg class="ui-icon ui-icon-xl ui-icon-stroke text-primary text-4xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-message"/></svg>
 </div>
 <h3 class="font-headline-sm text-primary mb-6">Smart SMS Detection</h3>
 <p class="text-secondary text-body-md mb-8">The core magic of Qoondeeye. No manual entry. Our smart engine detects financial SMS from all Somali providers and categorizes them in milliseconds.</p>
@@ -734,34 +822,34 @@
 <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-white/5 rounded-full"></div><div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
 <div>
 <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-white text-4xl">cloud_off</span>
+<svg class="ui-icon ui-icon-xl ui-icon-stroke text-white text-4xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-cloud-off"/></svg>
 </div>
 <h3 class="font-headline-sm mb-6">Full Offline Support</h3>
 <p class="text-white/80 text-body-md">No internet? No problem. Qoondeeye processes and stores your data locally on your device. Your finances are always available.</p>
 </div>
 <div class="mt-8 flex items-center gap-3">
-<span class="material-symbols-outlined text-green-400">check_circle</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke text-green-400" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-circle-check"/></svg>
 <span class="text-sm font-bold">100% On-Device Storage</span>
 </div>
 </div>
 <!-- Smaller Features -->
 <div class="bg-white p-10 rounded-4xl ambient-shadow border border-outline-variant/30 hover:border-primary/30 transition-all group">
 <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl">category</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-tags"/></svg>
 </div>
 <h3 class="font-bold text-xl text-primary mb-4">Smart Categories</h3>
 <p class="text-secondary text-sm leading-relaxed">Auto-detects groceries, utilities, rent, and family transfers based on transaction patterns.</p>
 </div>
 <div class="bg-white p-10 rounded-4xl ambient-shadow border border-outline-variant/30 hover:border-primary/30 transition-all group">
 <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-landmark"/></svg>
 </div>
 <h3 class="font-bold text-xl text-primary mb-4">Multi-Provider</h3>
 <p class="text-secondary text-sm leading-relaxed">Support for Hormuud EVC Plus, Somnet Jeeb, Salaam Bank, and Somtel eDahab—all in one app.</p>
 </div>
 <div class="bg-white p-10 rounded-4xl ambient-shadow border border-outline-variant/30 hover:border-primary/30 transition-all group">
 <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-primary text-3xl">bar_chart</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-bar-chart"/></svg>
 </div>
 <h3 class="font-bold text-xl text-primary mb-4">Custom Reports</h3>
 <p class="text-secondary text-sm leading-relaxed">Export deep dives into your spending habits to PDF or Excel. Professional insights for your wealth.</p>
@@ -778,7 +866,7 @@
 <div class="absolute inset-0 bg-white/5 rounded-full animate-pulse"></div>
 <div class="absolute inset-16 bg-white/10 rounded-full animate-ping" style="animation-duration: 3s"></div>
 <div class="relative w-48 h-48 bg-white text-primary rounded-4xl flex items-center justify-center shadow-[0_0_80px_rgba(255,255,255,0.2)]">
-<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<svg class="ui-icon ui-icon-hero text-primary" aria-hidden="true"><use href="#icon-shield-check-hero"/></svg>
 </div>
 </div>
 </div>
@@ -788,21 +876,21 @@
 <p class="text-white/70 mb-12 text-body-lg">Qoondeeye detects transaction SMS only when SMS Auto Import is enabled. You can turn it off anytime from Settings.</p>
 <div class="grid grid-cols-1 gap-8">
 <div class="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-<span class="material-symbols-outlined text-green-400 text-3xl">verified_user</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-shield-check"/></svg>
 <div>
 <p class="font-bold text-xl mb-1">Optional Permissions</p>
 <p class="text-white/60 text-sm">SMS Auto Import is optional. You can use Qoondeeye manually without enabling SMS access.</p>
 </div>
 </div>
 <div class="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-<span class="material-symbols-outlined text-green-400 text-3xl">no_encryption</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-lock-open"/></svg>
 <div>
 <p class="font-bold text-xl mb-1">Transaction SMS Only</p>
 <p class="text-white/60 text-sm">Qoondeeye is designed to detect supported transaction SMS patterns. Personal messages and OTPs are not saved as transactions.</p>
 </div>
 </div>
 <div class="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-<span class="material-symbols-outlined text-green-400 text-3xl">cloud_off</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-cloud-off"/></svg>
 <div>
 <p class="font-bold text-xl mb-1">On-device SMS Detection</p>
 <p class="text-white/60 text-sm">Transaction SMS detection happens on your phone when SMS Auto Import is enabled. You stay in control of what providers and accounts are connected.</p>
@@ -829,10 +917,10 @@
 <div class="premium-glass-card p-8 rounded-3xl flex flex-col items-center text-center group">
 <div class="relative mb-6">
 <div class="w-16 h-16 bg-white/50 rounded-2xl flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl">account_balance_wallet</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-wallet"/></svg>
 </div>
 <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-white text-[12px]">add</span>
+<svg class="ui-icon ui-icon-xs ui-icon-stroke text-white text-[12px]" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
 </div>
 </div>
 <h4 class="font-bold text-primary text-lg mb-2">Budgets</h4>
@@ -842,7 +930,7 @@
 <div class="premium-glass-card p-8 rounded-3xl flex flex-col items-center text-center group">
 <div class="relative mb-6">
 <div class="w-16 h-16 bg-white/50 rounded-2xl flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl">notifications_active</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-bell"/></svg>
 </div>
 <div class="absolute -bottom-2 -left-2 w-4 h-4 bg-surface-tint/20 rounded-full animate-pulse"></div>
 </div>
@@ -853,7 +941,7 @@
 <div class="premium-glass-card p-8 rounded-3xl flex flex-col items-center text-center group">
 <div class="relative mb-6">
 <div class="w-16 h-16 bg-white/50 rounded-2xl flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl">payments</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-credit-card"/></svg>
 </div>
 <div class="absolute top-1/2 -right-4 w-8 h-8 bg-primary/5 rounded-full blur-sm"></div>
 </div>
@@ -864,7 +952,7 @@
 <div class="premium-glass-card p-8 rounded-3xl flex flex-col items-center text-center group">
 <div class="relative mb-6">
 <div class="w-16 h-16 bg-white/50 rounded-2xl flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl">savings</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-piggy-bank"/></svg>
 </div>
 <div class="absolute -top-1 left-0 w-2 h-2 bg-green-400 rounded-full"></div>
 </div>
@@ -875,7 +963,7 @@
 <div class="premium-glass-card p-8 rounded-3xl flex flex-col items-center text-center group">
 <div class="relative mb-6">
 <div class="w-16 h-16 bg-white/50 rounded-2xl flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-primary text-3xl">sync_alt</span>
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-refresh"/></svg>
 </div>
 <div class="absolute -bottom-1 right-2 w-3 h-3 bg-primary/10 rounded-full"></div>
 </div>
@@ -894,7 +982,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>Is my money safe with Qoondeeye?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         Qoondeeye is a monitoring tool, not a wallet. We never have access to your actual funds. We only read the transaction confirmation messages you receive to help you visualize your spending habits.
@@ -903,7 +991,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>How much does it cost?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         Qoondeeye is currently free to download and use. If paid features are added in the future, they will be clearly explained inside the app before you choose to use them.
@@ -912,7 +1000,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>Will it drain my battery?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         No. Qoondeeye only wakes up for a fraction of a second when you receive a financial SMS. It's designed to be extremely lightweight and energy-efficient, having zero impact on your daily battery life.
@@ -921,7 +1009,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>Does Qoondeeye read all my SMS messages?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         No. SMS Auto Import is optional, and Qoondeeye is designed to detect transaction SMS patterns from supported providers. You can turn SMS Auto Import off anytime from Settings.
@@ -930,7 +1018,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>Is Qoondeeye a wallet or bank?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         No. Qoondeeye is not a wallet, bank, or payment service. It does not hold, send, or receive money. It only helps you organize and understand your transaction records.
@@ -939,7 +1027,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>What if Qoondeeye misses a transaction?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         Some providers may send new or unsupported SMS formats. If a transaction is missed, you can report the SMS format through support so we can improve detection in future updates.
@@ -948,7 +1036,7 @@
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
 <summary class="flex justify-between items-center cursor-pointer list-none font-bold text-xl text-primary">
 <span>Which devices are supported?</span>
-<span class="material-symbols-outlined transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full">expand_more</span>
+<svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
                         Qoondeeye is currently built for Android devices. SMS Auto Import depends on Android SMS permissions.
@@ -996,7 +1084,7 @@
                 </p>
 <div class="inline-flex flex-col gap-1 rounded-xl glass-card px-3 py-2 mb-4 max-w-sm">
 <p class="text-[11px] font-semibold text-primary flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">android</span>
+<svg class="ui-icon ui-icon-xs ui-icon-stroke text-[14px]" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-smartphone"/></svg>
                     Available on Android
                 </p>
 <p class="text-[11px] text-on-surface-variant leading-snug">SMS Auto Import supported on Android devices</p>
@@ -1220,7 +1308,8 @@
     const mobileMenuClose = document.getElementById('mobile-menu-close');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileMenuPanel = document.getElementById('mobile-menu-panel');
-    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+    const mobileMenuIconMenu = document.getElementById('mobile-menu-icon-menu');
+    const mobileMenuIconClose = document.getElementById('mobile-menu-icon-close');
     const mobileMenuLinks = mobileMenuPanel?.querySelectorAll('a') ?? [];
 
     function setMobileMenuOpen(isOpen) {
@@ -1230,9 +1319,8 @@
         mobileMenuOverlay?.setAttribute('aria-hidden', String(!isOpen));
         mobileMenuPanel?.setAttribute('aria-hidden', String(!isOpen));
         document.body.style.overflow = isOpen ? 'hidden' : '';
-        if (mobileMenuIcon) {
-            mobileMenuIcon.textContent = isOpen ? 'close' : 'menu';
-        }
+        mobileMenuIconMenu?.classList.toggle('hidden', isOpen);
+        mobileMenuIconClose?.classList.toggle('hidden', !isOpen);
     }
 
     mobileMenuToggle?.addEventListener('click', () => {
