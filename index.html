@@ -421,6 +421,69 @@
                 justify-content: center;
             }
         }
+        .avatar-group {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .avatar-group-item {
+            position: relative;
+            margin-left: -0.5rem;
+            z-index: 1;
+            cursor: default;
+            transition: transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), z-index 0s;
+        }
+        .avatar-group-item:first-child {
+            margin-left: 0;
+        }
+        .avatar-group-item:hover,
+        .avatar-group-item:focus-within {
+            z-index: 10;
+            transform: translateY(-30%);
+        }
+        .avatar-group-circle {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .avatar-group-tooltip {
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 0.5rem);
+            transform: translateX(-50%) translateY(6px) scale(0.95);
+            padding: 0.375rem 0.625rem;
+            border-radius: 0.5rem;
+            background: #191c1d;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+        }
+        .avatar-group-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #191c1d;
+        }
+        .avatar-group-item:hover .avatar-group-tooltip,
+        .avatar-group-item:focus-within .avatar-group-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
         @media (min-width: 1024px) {
             .hero-content-column {
                 transform: translateY(-1.75rem);
@@ -638,11 +701,23 @@
 </span>
 </a>
 <div class="hero-social-proof">
-<div class="flex -space-x-2 shrink-0">
-<div class="w-8 h-8 rounded-full border-2 border-white bg-blue-100 flex items-center justify-center text-[10px] font-bold">Ma</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-green-100 flex items-center justify-center text-[10px] font-bold">Sa</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center text-[10px] font-bold">Mo</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-red-100 flex items-center justify-center text-[10px] font-bold">As</div>
+<div class="avatar-group" role="group" aria-label="Qoondeeye users">
+<div class="avatar-group-item" tabindex="0">
+<span class="avatar-group-circle bg-blue-100">Ma</span>
+<span class="avatar-group-tooltip">Mahdi_Mnx</span>
+</div>
+<div class="avatar-group-item" tabindex="0">
+<span class="avatar-group-circle bg-green-100">Sa</span>
+<span class="avatar-group-tooltip">Sadaq</span>
+</div>
+<div class="avatar-group-item" tabindex="0">
+<span class="avatar-group-circle bg-orange-100">Mo</span>
+<span class="avatar-group-tooltip">Moha</span>
+</div>
+<div class="avatar-group-item" tabindex="0">
+<span class="avatar-group-circle bg-red-100">As</span>
+<span class="avatar-group-tooltip">Ashwaaq</span>
+</div>
 </div>
 <p class="text-sm font-bold text-secondary whitespace-nowrap">Join Somali users today</p>
 </div>
@@ -825,11 +900,11 @@
 <svg class="ui-icon ui-icon-xl ui-icon-stroke text-white text-4xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-cloud-off"/></svg>
 </div>
 <h3 class="font-headline-sm mb-6">Full Offline Support</h3>
-<p class="text-white/80 text-body-md">No internet? No problem. Qoondeeye processes and stores your data locally on your device. Your finances are always available.</p>
+<p class="text-white/80 text-body-md">No internet? No problem. Qoondeeye can detect and show your transactions locally on your device. When internet is available, your records may sync securely with your account for backup and access after reinstalling or logging in again.</p>
 </div>
 <div class="mt-8 flex items-center gap-3">
 <svg class="ui-icon ui-icon-lg ui-icon-stroke text-green-400" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-circle-check"/></svg>
-<span class="text-sm font-bold">100% On-Device Storage</span>
+<span class="text-sm font-bold">On-device SMS Detection</span>
 </div>
 </div>
 <!-- Smaller Features -->
@@ -893,7 +968,7 @@
 <svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-cloud-off"/></svg>
 <div>
 <p class="font-bold text-xl mb-1">On-device SMS Detection</p>
-<p class="text-white/60 text-sm">Transaction SMS detection happens on your phone when SMS Auto Import is enabled. You stay in control of what providers and accounts are connected.</p>
+<p class="text-white/60 text-sm">Qoondeeye detects supported transaction SMS on your phone when SMS Auto Import is enabled. Your transaction records are organized in the app and may be securely synced to your account so your data can be restored when you log in again.</p>
 </div>
 </div>
 </div>
