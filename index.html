@@ -132,6 +132,17 @@
         .ui-icon-stroke { fill: none; stroke: currentColor; }
         .ui-icon-fill { fill: currentColor; stroke: none; }
         .glass-nav {
+            position: fixed;
+            top: 14px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            width: min(1080px, calc(100% - 24px));
+            margin-inline: auto;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(192, 199, 205, 0.55);
+            box-shadow: 0 16px 40px -22px rgba(0, 51, 69, 0.45);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
@@ -175,7 +186,145 @@
             }
         }
         .hero-gradient {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
             background: radial-gradient(circle at 50% 0%, #E0F2FF 0%, #f8fafb 60%);
+        }
+        .hero-wave-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .provider-marquee {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            margin-top: 1.75rem;
+        }
+        .provider-marquee-label {
+            margin: 0 0 0.75rem;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #50606f;
+        }
+        .provider-marquee-window {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        .provider-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: provider-marquee 40s linear infinite;
+        }
+        .provider-marquee:hover .provider-marquee-track {
+            animation-play-state: paused;
+        }
+        .provider-marquee-group {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            padding-right: 1.75rem;
+            flex: 0 0 auto;
+        }
+        .provider-logo {
+            height: 32px;
+            width: auto;
+            max-width: 108px;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+        .progressive-blur {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 48px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .progressive-blur-left { left: 0; --blur-angle: 270deg; }
+        .progressive-blur-right { right: 0; --blur-angle: 90deg; }
+        .progressive-blur span {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .progressive-blur span:nth-child(1) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 0%, rgba(255,255,255,1) 11.11%, rgba(255,255,255,1) 22.22%, rgba(255,255,255,0) 33.33%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 0%, rgba(255,255,255,1) 11.11%, rgba(255,255,255,1) 22.22%, rgba(255,255,255,0) 33.33%);
+            -webkit-backdrop-filter: blur(0px);
+            backdrop-filter: blur(0px);
+        }
+        .progressive-blur span:nth-child(2) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 11.11%, rgba(255,255,255,1) 22.22%, rgba(255,255,255,1) 33.33%, rgba(255,255,255,0) 44.44%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 11.11%, rgba(255,255,255,1) 22.22%, rgba(255,255,255,1) 33.33%, rgba(255,255,255,0) 44.44%);
+            -webkit-backdrop-filter: blur(1px);
+            backdrop-filter: blur(1px);
+        }
+        .progressive-blur span:nth-child(3) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 22.22%, rgba(255,255,255,1) 33.33%, rgba(255,255,255,1) 44.44%, rgba(255,255,255,0) 55.56%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 22.22%, rgba(255,255,255,1) 33.33%, rgba(255,255,255,1) 44.44%, rgba(255,255,255,0) 55.56%);
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+        }
+        .progressive-blur span:nth-child(4) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 33.33%, rgba(255,255,255,1) 44.44%, rgba(255,255,255,1) 55.56%, rgba(255,255,255,0) 66.67%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 33.33%, rgba(255,255,255,1) 44.44%, rgba(255,255,255,1) 55.56%, rgba(255,255,255,0) 66.67%);
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+        }
+        .progressive-blur span:nth-child(5) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 44.44%, rgba(255,255,255,1) 55.56%, rgba(255,255,255,1) 66.67%, rgba(255,255,255,0) 77.78%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 44.44%, rgba(255,255,255,1) 55.56%, rgba(255,255,255,1) 66.67%, rgba(255,255,255,0) 77.78%);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+        .progressive-blur span:nth-child(6) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 55.56%, rgba(255,255,255,1) 66.67%, rgba(255,255,255,1) 77.78%, rgba(255,255,255,0) 88.89%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 55.56%, rgba(255,255,255,1) 66.67%, rgba(255,255,255,1) 77.78%, rgba(255,255,255,0) 88.89%);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+        .progressive-blur span:nth-child(7) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 66.67%, rgba(255,255,255,1) 77.78%, rgba(255,255,255,1) 88.89%, rgba(255,255,255,0) 100%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 66.67%, rgba(255,255,255,1) 77.78%, rgba(255,255,255,1) 88.89%, rgba(255,255,255,0) 100%);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+        }
+        .progressive-blur span:nth-child(8) {
+            -webkit-mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 77.78%, rgba(255,255,255,1) 88.89%, rgba(255,255,255,1) 100%, rgba(255,255,255,0) 111.11%);
+            mask-image: linear-gradient(var(--blur-angle), rgba(255,255,255,0) 77.78%, rgba(255,255,255,1) 88.89%, rgba(255,255,255,1) 100%, rgba(255,255,255,0) 111.11%);
+            -webkit-backdrop-filter: blur(7px);
+            backdrop-filter: blur(7px);
+        }
+        @keyframes provider-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @media (min-width: 1024px) {
+            .provider-marquee-label { text-align: left; }
+            .provider-logo { height: 36px; max-width: 128px; }
+            .progressive-blur { width: 64px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .provider-marquee-track { animation: none; }
+        }
+        .hero-content-column > .inline-flex {
+            background-color: rgba(255, 255, 255, 0.92);
+            color: #003345;
+        }
+        .hero-content-column h1 span,
+        .hero-content-column > p,
+        .hero-social-proof > p {
+            color: #003345;
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
@@ -185,6 +334,65 @@
             box-shadow: 0 8px 32px 0 rgba(0, 51, 69, 0.05);
             transition: all 0.5s ease;
         }
+        .pricing-shell {
+            position: relative;
+        }
+        .pricing-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            background: #ffffff;
+            border: 1px solid rgba(192, 199, 205, 0.55);
+            border-radius: 1.75rem;
+            padding: 1rem;
+            box-shadow: 0 24px 60px -36px rgba(0, 51, 69, 0.35);
+        }
+        .pricing-plus {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            color: #003345;
+            background: #f8fafb;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+        .pricing-plus-tl { top: -11px; left: -11px; }
+        .pricing-plus-tr { top: -11px; right: -11px; }
+        .pricing-plus-bl { bottom: -11px; left: -11px; }
+        .pricing-plus-br { bottom: -11px; right: -11px; }
+        .pricing-featured {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            background: #ffffff;
+        }
+        .pricing-featured::before {
+            content: "";
+            position: absolute;
+            inset: -60%;
+            z-index: -2;
+            background: conic-gradient(from 0deg, transparent 0 68%, #96ceeb 78%, #003345 86%, #bfe8ff 92%, transparent 100%);
+            animation: pricing-trail 5.5s linear infinite;
+        }
+        .pricing-featured::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            z-index: -1;
+            border-radius: inherit;
+            background: #ffffff;
+        }
+        @keyframes pricing-trail {
+            to { transform: rotate(1turn); }
+        }
+        @media (min-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .pricing-featured::before { animation: none; }
+        }
         .footer-shell {
             background: linear-gradient(180deg, #f4fafe 0%, #e8f3fb 45%, #dfeef8 100%);
             border-top: 1px solid rgba(192, 199, 205, 0.45);
@@ -193,6 +401,17 @@
             background: linear-gradient(160deg, #f1f9ff 0%, #e4f1fb 55%, #d8ecf8 100%);
             border: 1px solid rgba(255, 255, 255, 0.7);
             box-shadow: 0 30px 80px -30px rgba(0, 51, 69, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        .privacy-shell {
+            background: linear-gradient(165deg, #f4fafe 0%, #e7f3fb 52%, #dceef8 100%);
+        }
+        .privacy-card {
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px -18px rgba(0, 51, 69, 0.25);
+        }
+        .privacy-card:hover {
+            background: #ffffff;
         }
         .footer-wordmark {
             position: absolute;
@@ -217,6 +436,10 @@
             padding: 32px 20px;
             border-radius: 36px;
             overflow: hidden;
+            background: linear-gradient(160deg, #f7fbff 0%, #e8f4fc 55%, #dceef8 100%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 30px 80px -30px rgba(0, 51, 69, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            color: #003345;
         }
         .cta-final-desc {
             font-size: clamp(15px, 4vw, 18px);
@@ -229,6 +452,8 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
             padding: 0 4px;
         }
         .cta-store-btn {
@@ -354,15 +579,20 @@
                 width: auto;
                 max-width: none;
             }
+            .hero-store-stack {
+                width: 100%;
+                justify-content: flex-start;
+            }
         }
         .hero-play-btn {
             box-sizing: border-box;
-            max-width: 100%;
-            min-width: 300px;
+            max-width: none;
+            min-width: 0;
+            flex: 1 1 0;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2rem;
+            padding: 0.9rem 1rem;
             text-decoration: none;
         }
         .hero-play-badge {
@@ -393,12 +623,51 @@
             line-height: 1.05;
             font-weight: 800;
         }
+        .hero-store-stack {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+        }
+        .hero-store-soon,
+        .cta-store-soon {
+            position: relative;
+            cursor: default;
+            background: rgba(255, 255, 255, 0.92);
+            color: #003345;
+            border: 1px solid rgba(0, 51, 69, 0.16);
+            box-shadow: none;
+        }
+        .hero-store-soon {
+            box-shadow: 0 10px 30px rgba(0, 51, 69, 0.08);
+            padding-right: 2.4rem;
+        }
+        .store-soon-pill {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: #003345;
+            color: #ffffff;
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            padding: 4px 7px;
+        }
         @media (max-width: 767px) {
             .hero-play-btn {
-                width: 100%;
+                width: auto;
                 min-width: 0;
-                max-width: 280px;
-                padding: 0.875rem 1.25rem;
+                max-width: none;
+                flex: 1 1 0;
+                padding: 0.75rem 0.65rem;
+            }
+            .hero-store-soon {
+                padding-right: 2.1rem;
             }
             .hero-play-icon {
                 width: 28px;
@@ -415,6 +684,9 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+        }
+        .hero-social-proof-below {
+            margin-top: 1.25rem;
         }
         @media (max-width: 1023px) {
             .hero-social-proof {
@@ -564,6 +836,197 @@
         .premium-section-bg {
             background: radial-gradient(circle at 50% 50%, #f0f9ff 0%, #e0f2fe 100%);
         }
+        .team-showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
+            width: 100%;
+            max-width: 64rem;
+            margin: 0 auto;
+            user-select: none;
+        }
+        .team-photos {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+            overflow-x: auto;
+            max-width: 100%;
+            padding-bottom: 0.25rem;
+        }
+        .team-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .team-col-2 { margin-top: 48px; }
+        .team-col-3 { margin-top: 22px; }
+        .team-photo {
+            display: block;
+            padding: 0;
+            border: 0;
+            background: none;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: opacity 0.4s ease;
+        }
+        .team-col-1 .team-photo { width: 110px; height: 120px; }
+        .team-col-2 .team-photo { width: 122px; height: 132px; }
+        .team-col-3 .team-photo { width: 115px; height: 125px; }
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 18%;
+            filter: grayscale(1) brightness(0.77);
+            transition: filter 0.5s ease;
+        }
+        .team-photo.is-active img {
+            filter: grayscale(0) brightness(1);
+        }
+        .team-photo.is-dimmed,
+        .team-row.is-dimmed {
+            opacity: 0.55;
+        }
+        .team-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            flex: 1;
+            width: 100%;
+        }
+        .team-row {
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .team-row-main {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .team-marker {
+            width: 1rem;
+            height: 0.75rem;
+            border-radius: 5px;
+            flex-shrink: 0;
+            background: rgba(0, 51, 69, 0.25);
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        .team-row.is-active .team-marker {
+            width: 1.25rem;
+            background: #003345;
+        }
+        .team-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: rgba(0, 51, 69, 0.82);
+            transition: color 0.3s ease;
+        }
+        .team-row.is-active .team-name {
+            color: #003345;
+        }
+        .team-role {
+            margin-top: 0.375rem;
+            padding-left: 1.7rem;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #50606f;
+        }
+        @media (min-width: 640px) {
+            .team-col-1 .team-photo { width: 130px; height: 140px; }
+            .team-col-2 .team-photo { width: 145px; height: 155px; }
+            .team-col-3 .team-photo { width: 136px; height: 146px; }
+            .team-col-2 { margin-top: 56px; }
+            .team-col-3 { margin-top: 26px; }
+            .team-photos { gap: 0.75rem; }
+            .team-col { gap: 0.75rem; }
+        }
+        @media (min-width: 640px) and (max-width: 767px) {
+            .team-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem 1.5rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .team-showcase {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 3.5rem;
+            }
+            .team-photos { overflow: visible; padding-bottom: 0; }
+            .team-col-1 .team-photo { width: 155px; height: 165px; }
+            .team-col-2 .team-photo { width: 172px; height: 182px; }
+            .team-col-3 .team-photo { width: 162px; height: 172px; }
+            .team-col-2 { margin-top: 68px; }
+            .team-col-3 { margin-top: 32px; }
+            .team-list {
+                display: flex;
+                flex-direction: column;
+                padding-top: 0.5rem;
+                gap: 1.35rem;
+            }
+            .team-name { font-size: 1.125rem; }
+        }
+        .scroll-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 45;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            width: 52px;
+            height: 52px;
+            padding: 0;
+            border: 0;
+            border-radius: 999px;
+            background: #003345;
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 12px 28px -12px rgba(0, 51, 69, 0.7);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, background-color 0.2s ease;
+        }
+        .scroll-top.is-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .scroll-top-arrow {
+            width: 18px;
+            height: 18px;
+            display: block;
+            animation: scroll-top-jump 1.15s ease-in-out infinite;
+        }
+        .scroll-top-line {
+            width: 1.5px;
+            height: 12px;
+            border-radius: 999px;
+            background: currentColor;
+        }
+        .scroll-top:hover {
+            background: #2a657e;
+        }
+        @keyframes scroll-top-jump {
+            0%, 100% { transform: translateY(2px); }
+            45% { transform: translateY(-5px); }
+            70% { transform: translateY(0); }
+        }
+        @media (max-width: 767px) {
+            .scroll-top { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-top-arrow { animation: none; }
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
@@ -641,8 +1104,8 @@
 </svg>
 
 <!-- Top Navigation Bar -->
-<nav class="fixed top-0 w-full z-50 glass-nav bg-white/70 border-b border-outline-variant/30">
-<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<nav class="glass-nav">
+<div class="flex justify-between items-center h-16 px-3 sm:px-5">
 <a class="font-headline-sm text-headline-sm font-extrabold text-primary flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer" id="brand-home-link" role="button" tabindex="0" aria-label="Back to top">
 <img alt="" class="brand-icon-header" decoding="async" height="40" src="assets/app-icon.png" width="40"/>
             Qoondeeye
@@ -650,8 +1113,10 @@
 <div class="hidden md:flex gap-stack-lg items-center">
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#features">Features</a>
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#security">Privacy</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#team">Team</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#pricing">Pricing</a>
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#faq">FAQ</a>
-<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold active:scale-95 transition-all hover:shadow-lg hover:shadow-primary/20" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Download App</a>
+<a class="bg-primary text-on-primary px-5 py-2 rounded-full font-bold whitespace-nowrap active:scale-95 transition-all hover:shadow-lg hover:shadow-primary/20" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Download App</a>
 </div>
 <div class="md:hidden">
 <button aria-controls="mobile-menu-panel" aria-expanded="false" aria-label="Open menu" class="text-primary p-1 -mr-1" id="mobile-menu-toggle" type="button">
@@ -671,14 +1136,16 @@
 <nav class="flex flex-col gap-1 p-6">
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-3" href="#features">Features</a>
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-3" href="#security">Privacy</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-3" href="#team">Team</a>
+<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-3" href="#pricing">Pricing</a>
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors py-3" href="#faq">FAQ</a>
 <a class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-center mt-4 active:scale-95 transition-all" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Download App</a>
 </nav>
 </aside>
 <main>
 <!-- Hero Section -->
-<section class="hero-gradient pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop">
-<div class="max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
+<section class="hero-gradient pt-32 pb-8 md:pb-12 px-margin-mobile md:px-margin-desktop" id="hero-wave">
+<div class="relative z-10 max-w-container-max mx-auto flex flex-col lg:flex-row items-center gap-16">
 <div class="w-full lg:w-5/12 text-center lg:text-left z-10 hero-content-column">
 <div class="inline-flex items-center gap-2 bg-primary-fixed/30 text-on-primary-fixed-variant px-4 py-1.5 rounded-full mb-6">
 <svg class="ui-icon ui-icon-md ui-icon-stroke text-lg" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-badge-check"/></svg>
@@ -690,7 +1157,7 @@
 <p class="font-body-lg text-body-lg text-secondary mb-10 max-w-xl mx-auto lg:mx-0">
                     Qoondeeye tracks your EVC Plus, Somnet, eDahab, and Salaam Bank transactions instantly via smart SMS detection. No manual typing, just pure financial clarity.
                 </p>
-<div class="hero-cta-group justify-center lg:justify-start">
+<div class="hero-store-stack">
 <a class="hero-play-btn bg-[#000000] text-white rounded-2xl hover:scale-105 transition-all shadow-xl shrink-0" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">
 <span class="hero-play-badge">
 <svg aria-hidden="true" class="hero-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>
@@ -700,7 +1167,67 @@
 </span>
 </span>
 </a>
-<div class="hero-social-proof">
+<div class="hero-play-btn hero-store-soon rounded-2xl shrink-0" role="status" aria-label="App Store coming soon">
+<span class="store-soon-pill">Soon</span>
+<span class="hero-play-badge">
+<svg aria-hidden="true" class="hero-play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16.37 12.73c-.03-2.32 1.9-3.43 1.98-3.48-1.08-1.58-2.76-1.8-3.36-1.82-1.43-.15-2.79.84-3.51.84-.73 0-1.85-.82-3.04-.8-1.56.03-3 .91-3.8 2.31-1.62 2.81-.41 6.97 1.16 9.25.77 1.11 1.69 2.36 2.9 2.31 1.16-.05 1.6-.75 3-.75s1.8.75 3.04.73c1.26-.02 2.05-1.13 2.82-2.25.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.44-.94-2.46-3.72zM14.67 6.18c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.71-1.29z"/></svg>
+<span class="hero-play-copy">
+<span class="hero-play-label-sm block">Coming soon</span>
+<span class="hero-play-label-lg block">App Store</span>
+</span>
+</span>
+</div>
+</div>
+<div class="provider-marquee" role="region" aria-label="Supported providers">
+<p class="provider-marquee-label">Supported providers</p>
+<div class="provider-marquee-window">
+<div class="provider-marquee-track">
+<div class="provider-marquee-group">
+<img alt="Hormuud" class="provider-logo" decoding="async" src="assets/providers/hormuud.png"/>
+<img alt="Somnet" class="provider-logo" decoding="async" src="assets/providers/somnet.png"/>
+<img alt="Somtel" class="provider-logo" decoding="async" src="assets/providers/somtel.png"/>
+<img alt="Zaad" class="provider-logo" decoding="async" src="assets/providers/Zaad.png"/>
+<img alt="Golis" class="provider-logo" decoding="async" src="assets/providers/Golis.png"/>
+<img alt="Salaam Bank" class="provider-logo" decoding="async" src="assets/providers/Salam-Bank.png"/>
+<img alt="SomBank" class="provider-logo" decoding="async" src="assets/providers/SomBank.png"/>
+<img alt="Dahabshiil" class="provider-logo" decoding="async" src="assets/providers/Dahabshiil-bank.png"/>
+<img alt="MyBank" class="provider-logo" decoding="async" src="assets/providers/myBank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/hormuud.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/somnet.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/somtel.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Zaad.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Golis.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Salam-Bank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/SomBank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Dahabshiil-bank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/myBank.png"/>
+</div>
+<div class="provider-marquee-group" aria-hidden="true">
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/hormuud.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/somnet.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/somtel.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Zaad.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Golis.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Salam-Bank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/SomBank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Dahabshiil-bank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/myBank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/hormuud.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/somnet.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/somtel.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Zaad.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Golis.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Salam-Bank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/SomBank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/Dahabshiil-bank.png"/>
+<img alt="" class="provider-logo" decoding="async" src="assets/providers/myBank.png"/>
+</div>
+</div>
+<div class="progressive-blur progressive-blur-left" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div class="progressive-blur progressive-blur-right" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+</div>
+<div class="hero-social-proof hero-social-proof-below">
 <div class="avatar-group" role="group" aria-label="Qoondeeye users">
 <div class="avatar-group-item" tabindex="0">
 <span class="avatar-group-circle bg-blue-100">Ma</span>
@@ -722,7 +1249,6 @@
 <p class="text-sm font-bold text-secondary whitespace-nowrap">Join Somali users today</p>
 </div>
 </div>
-</div>
 <div class="w-full lg:w-7/12 relative mt-12 lg:mt-0 flex flex-col items-center hero-visual-column">
 <!-- Phone Carousel Wrapper -->
 <div class="mockup-carousel-container" id="mockup-carousel">
@@ -734,19 +1260,19 @@
 <svg class="ui-icon ui-icon-lg ui-icon-stroke text-primary" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-right"/></svg>
 </button>
 <!-- Slide 1: Dashboard -->
-<div class="phone-slide active" data-index="0">
+<div class="phone-slide prev" data-index="0">
 <div class="phone-mockup aspect-[9/19] ambient-shadow">
 <img alt="Dashboard View" class="w-full h-full object-cover" decoding="async" src="assets/smart-dashboard.png"/>
 </div>
 </div>
 <!-- Slide 2: Transactions -->
-<div class="phone-slide next" data-index="1">
+<div class="phone-slide active" data-index="1">
 <div class="phone-mockup aspect-[9/19] ambient-shadow">
 <img alt="Transactions View" class="w-full h-full object-cover" decoding="async" src="assets/Transaction-history.png"/>
 </div>
 </div>
 <!-- Slide 3: Reports -->
-<div class="phone-slide hidden-right" data-index="2">
+<div class="phone-slide next" data-index="2">
 <div class="phone-mockup aspect-[9/19] ambient-shadow">
 <img alt="Reports View" class="w-full h-full object-cover" decoding="async" src="assets/Reports-screen.jpg"/>
 </div>
@@ -771,12 +1297,13 @@
 </div>
 <!-- Pagination Dots -->
 <div class="flex gap-2.5 mt-4 z-30" id="carousel-dots">
-<button class="w-2.5 h-2.5 rounded-full bg-primary transition-all duration-300" data-dot="0"></button>
-<button class="w-2 h-2 rounded-full bg-outline-variant/50 transition-all duration-300" data-dot="1"></button>
+<button class="w-2 h-2 rounded-full bg-outline-variant/50 transition-all duration-300" data-dot="0"></button>
+<button class="w-2.5 h-2.5 rounded-full bg-primary transition-all duration-300" data-dot="1"></button>
 <button class="w-2 h-2 rounded-full bg-outline-variant/50 transition-all duration-300" data-dot="2"></button>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 <!-- Challenge + How It Works Section -->
 <section class="py-20 md:py-24 px-margin-mobile md:px-margin-desktop bg-white">
 <div class="challenge-shell max-w-container-max mx-auto relative overflow-hidden rounded-4xl px-6 py-14 md:px-16 md:py-20">
@@ -933,42 +1460,42 @@
 </div>
 </section>
 <!-- Privacy & Trust Section -->
-<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-primary text-white overflow-hidden relative" id="security">
-<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+<section class="privacy-shell py-section-gap px-margin-mobile md:px-margin-desktop overflow-hidden relative" id="security">
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-20">
 <div class="w-full md:w-1/2 relative">
 <div class="relative w-full aspect-square max-w-md mx-auto flex items-center justify-center">
-<div class="absolute inset-0 bg-white/5 rounded-full animate-pulse"></div>
-<div class="absolute inset-16 bg-white/10 rounded-full animate-ping" style="animation-duration: 3s"></div>
-<div class="relative w-48 h-48 bg-white text-primary rounded-4xl flex items-center justify-center shadow-[0_0_80px_rgba(255,255,255,0.2)]">
+<div class="absolute inset-0 bg-primary/5 rounded-full animate-pulse"></div>
+<div class="absolute inset-16 bg-primary/10 rounded-full animate-ping" style="animation-duration: 3s"></div>
+<div class="relative w-48 h-48 bg-white text-primary rounded-4xl flex items-center justify-center shadow-[0_20px_60px_rgba(0,51,69,0.12)]">
 <svg class="ui-icon ui-icon-hero text-primary" aria-hidden="true"><use href="#icon-shield-check-hero"/></svg>
 </div>
 </div>
 </div>
 <div class="w-full md:w-1/2 z-10">
-<span class="bg-white/10 text-white px-4 py-1.5 rounded-full font-label-md text-[12px] uppercase tracking-widest mb-6 inline-block">Privacy First Architecture</span>
-<h2 class="font-display-lg-mobile md:font-headline-md text-white mb-stack-md leading-tight">Privacy-first SMS tracking you control.</h2>
-<p class="text-white/70 mb-12 text-body-lg">Qoondeeye detects transaction SMS only when SMS Auto Import is enabled. You can turn it off anytime from Settings.</p>
+<span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-md text-[12px] uppercase tracking-widest mb-6 inline-block">Privacy First Architecture</span>
+<h2 class="font-display-lg-mobile md:font-headline-md text-primary mb-stack-md leading-tight">Privacy-first SMS tracking you control.</h2>
+<p class="text-secondary mb-12 text-body-lg">Qoondeeye detects transaction SMS only when SMS Auto Import is enabled. You can turn it off anytime from Settings.</p>
 <div class="grid grid-cols-1 gap-8">
-<div class="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-shield-check"/></svg>
+<div class="privacy-card flex gap-6 p-6 rounded-3xl transition-colors">
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-shield-check"/></svg>
 <div>
-<p class="font-bold text-xl mb-1">Optional Permissions</p>
-<p class="text-white/60 text-sm">SMS Auto Import is optional. You can use Qoondeeye manually without enabling SMS access.</p>
+<p class="font-bold text-xl text-primary mb-1">Optional Permissions</p>
+<p class="text-secondary text-sm">SMS Auto Import is optional. You can use Qoondeeye manually without enabling SMS access.</p>
 </div>
 </div>
-<div class="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-lock-open"/></svg>
+<div class="privacy-card flex gap-6 p-6 rounded-3xl transition-colors">
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-lock-open"/></svg>
 <div>
-<p class="font-bold text-xl mb-1">Transaction SMS Only</p>
-<p class="text-white/60 text-sm">Qoondeeye is designed to detect supported transaction SMS patterns. Personal messages and OTPs are not saved as transactions.</p>
+<p class="font-bold text-xl text-primary mb-1">Transaction SMS Only</p>
+<p class="text-secondary text-sm">Qoondeeye is designed to detect supported transaction SMS patterns. Personal messages and OTPs are not saved as transactions.</p>
 </div>
 </div>
-<div class="flex gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-green-400 text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-cloud-off"/></svg>
+<div class="privacy-card flex gap-6 p-6 rounded-3xl transition-colors">
+<svg class="ui-icon ui-icon-2xl ui-icon-stroke text-primary text-3xl" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-cloud-off"/></svg>
 <div>
-<p class="font-bold text-xl mb-1">On-device SMS Detection</p>
-<p class="text-white/60 text-sm">Qoondeeye detects supported transaction SMS on your phone when SMS Auto Import is enabled. Your transaction records are organized in the app and may be securely synced to your account so your data can be restored when you log in again.</p>
+<p class="font-bold text-xl text-primary mb-1">On-device SMS Detection</p>
+<p class="text-secondary text-sm">Qoondeeye detects supported transaction SMS on your phone when SMS Auto Import is enabled. Your transaction records are organized in the app and may be securely synced to your account so your data can be restored when you log in again.</p>
 </div>
 </div>
 </div>
@@ -1049,7 +1576,122 @@
 </div>
 </div>
 </section>
-<!-- FAQ Section -->
+<!-- Team Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="team">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">The team behind Qoondeeye</h2>
+<p class="text-secondary font-body-lg max-w-2xl mx-auto">The developers building financial clarity for Somali users.</p>
+</div>
+<div class="team-showcase" id="team-showcase">
+<div class="team-photos" aria-label="Team photos">
+<div class="team-col team-col-1">
+<button class="team-photo" type="button" data-member="mohamed" aria-label="Mohamed Abdifitah, Founder and Developer">
+<img alt="Mohamed Abdifitah" src="assets/Mohamed.png" width="155" height="165"/>
+</button>
+<button class="team-photo" type="button" data-member="sadaq" aria-label="Sadaq Elmi, Co-Founder">
+<img alt="Sadaq Elmi" src="assets/Sadaq.png" width="155" height="165"/>
+</button>
+</div>
+<div class="team-col team-col-2">
+<button class="team-photo" type="button" data-member="mahdi" aria-label="Mahdi Abdulkadir, Co-Founder">
+<img alt="Mahdi Abdulkadir" src="assets/Mahdi.png" width="172" height="182"/>
+</button>
+</div>
+<div class="team-col team-col-3">
+<button class="team-photo" type="button" data-member="shuceyb" aria-label="Shuceyb Mohamed, Designer">
+<img alt="Shuceyb Mohamed" src="assets/Shuceyb.png" width="162" height="172"/>
+</button>
+</div>
+</div>
+<div class="team-list">
+<div class="team-row" data-member="mohamed" tabindex="0">
+<div class="team-row-main">
+<span class="team-marker" aria-hidden="true"></span>
+<span class="team-name">Mohamed Abdifitah</span>
+</div>
+<p class="team-role">Founder &amp; Developer</p>
+</div>
+<div class="team-row" data-member="mahdi" tabindex="0">
+<div class="team-row-main">
+<span class="team-marker" aria-hidden="true"></span>
+<span class="team-name">Mahdi Abdulkadir</span>
+</div>
+<p class="team-role">Co-Founder</p>
+</div>
+<div class="team-row" data-member="shuceyb" tabindex="0">
+<div class="team-row-main">
+<span class="team-marker" aria-hidden="true"></span>
+<span class="team-name">Shuceyb Mohamed</span>
+</div>
+<p class="team-role">Designer</p>
+</div>
+<div class="team-row" data-member="sadaq" tabindex="0">
+<div class="team-row-main">
+<span class="team-marker" aria-hidden="true"></span>
+<span class="team-name">Sadaq Elmi</span>
+</div>
+<p class="team-role">Co-Founder</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="pricing-shell py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="pricing">
+<div class="max-w-3xl mx-auto">
+<div class="text-center max-w-xl mx-auto mb-12">
+<span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-md text-[12px] uppercase tracking-widest mb-6 inline-block">Pricing</span>
+<h2 class="font-display-lg-mobile md:font-headline-md text-primary mb-4">Pricing based on your success</h2>
+<p class="text-secondary text-body-lg">One simple price for Qoondeeye. Stay monthly, or save more with a yearly plan.</p>
+</div>
+<div class="pricing-grid">
+<svg class="pricing-plus pricing-plus-tl ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
+<svg class="pricing-plus pricing-plus-tr ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
+<svg class="pricing-plus pricing-plus-bl ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
+<svg class="pricing-plus pricing-plus-br ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
+<div class="px-4 pt-5 pb-4">
+<div class="flex items-center justify-between gap-3">
+<h3 class="font-semibold text-xl text-primary leading-none">Monthly</h3>
+<div class="flex items-center gap-2">
+<span class="text-sm text-secondary line-through">$1.50</span>
+<span class="bg-secondary-container text-primary text-[11px] font-bold px-2.5 py-1 rounded-full">67% off</span>
+</div>
+</div>
+<p class="text-secondary text-sm mt-2">Best value for growing businesses.</p>
+<div class="mt-10">
+<p class="text-secondary flex items-end gap-0.5">
+<span class="text-xl">$</span>
+<span class="text-primary text-5xl font-extrabold tracking-tight leading-none">0.50</span>
+<span class="text-lg mb-1">/month</span>
+</p>
+<a class="mt-5 w-full inline-flex items-center justify-center rounded-full border border-primary/20 text-primary font-bold px-6 py-3 hover:bg-primary/5 transition-colors" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Start Your Journey</a>
+</div>
+</div>
+<div class="pricing-featured px-4 pt-5 pb-4">
+<div class="flex items-center justify-between gap-3">
+<h3 class="font-semibold text-xl text-primary leading-none">Yearly</h3>
+<div class="flex items-center gap-2">
+<span class="text-sm text-secondary line-through">$12</span>
+<span class="bg-primary text-white text-[11px] font-bold px-2.5 py-1 rounded-full">22% off</span>
+</div>
+</div>
+<p class="text-secondary text-sm mt-2">Unlock savings with an annual commitment.</p>
+<div class="mt-10">
+<p class="text-secondary flex items-end">
+<span class="text-xl">$</span>
+<span class="text-primary text-5xl font-extrabold tracking-tight leading-none">9.36</span>
+<span class="text-lg mb-1">/year</span>
+</p>
+<a class="mt-5 w-full inline-flex items-center justify-center rounded-full bg-primary text-white font-bold px-6 py-3 hover:shadow-lg hover:shadow-primary/20 transition-all" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Get Started Now</a>
+</div>
+</div>
+</div>
+<p class="mt-4 flex items-center justify-center gap-2 text-sm text-secondary">
+<svg class="ui-icon ui-icon-sm ui-icon-stroke text-primary" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-shield-check"/></svg>
+<span>Access to all features with no hidden fees</span>
+</p>
+</div>
+</section>
 <section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white" id="faq">
 <div class="max-w-3xl mx-auto">
 <h2 class="font-headline-md text-headline-md text-primary text-center mb-16">Frequently Asked Questions</h2>
@@ -1069,7 +1711,7 @@
 <svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
-                        Qoondeeye is currently free to download and use. If paid features are added in the future, they will be clearly explained inside the app before you choose to use them.
+                        Monthly is $0.50, down from $1.50, or $9.36 for the year after 22% off $12. Download is free, and any paid features are explained before you choose them.
                     </p>
 </details>
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
@@ -1114,7 +1756,7 @@
 <svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
-                        Qoondeeye is currently built for Android devices. SMS Auto Import depends on Android SMS permissions.
+                        Qoondeeye is currently built for Android devices. SMS Auto Import depends on Android SMS permissions. An iOS version is coming soon on the App Store.
                     </p>
 </details>
 </div>
@@ -1122,20 +1764,28 @@
 </section>
 <!-- Final CTA -->
 <section class="pt-12 pb-20 md:pt-14 md:pb-24 px-margin-mobile md:px-margin-desktop bg-white">
-<div class="cta-final-card max-w-container-max mx-auto bg-primary text-center text-white relative shadow-[0_40px_100px_-20px_rgba(0,51,69,0.3)]">
-<div class="absolute top-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none"></div>
-<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full -ml-48 -mb-48 blur-3xl pointer-events-none"></div>
+<div class="cta-final-card max-w-container-max mx-auto text-center relative">
+<div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-fixed/40 rounded-full -ml-48 -mb-48 blur-3xl pointer-events-none"></div>
 <div class="relative z-10">
-<h2 class="font-display-lg-mobile md:font-display-lg text-white mb-4">Ready to take control?</h2>
-<p class="cta-final-desc text-white/70 mb-8">Join Somali families building a better financial future with Qoondeeye. Download now and start tracking for free.</p>
+<h2 class="font-display-lg-mobile md:font-display-lg text-primary mb-4">Ready to take control?</h2>
+<p class="cta-final-desc text-secondary mb-8">Join Somali families building a better financial future with Qoondeeye. Download now and start tracking for free.</p>
 <div class="cta-store-wrap">
-<a class="cta-store-btn bg-white text-primary rounded-3xl hover:scale-105 transition-transform shadow-2xl" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">
+<a class="cta-store-btn bg-[#000000] text-white rounded-3xl hover:scale-105 transition-transform shadow-xl" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">
 <svg aria-hidden="true" class="cta-store-play" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>
 <div class="cta-store-copy">
 <p class="cta-store-label-sm uppercase font-bold">Available on</p>
 <p class="cta-store-label-lg font-extrabold">Google Play</p>
 </div>
 </a>
+<div class="cta-store-btn cta-store-soon rounded-3xl" role="status" aria-label="App Store coming soon">
+<span class="store-soon-pill">Soon</span>
+<svg aria-hidden="true" class="cta-store-play" viewBox="0 0 24 24" fill="currentColor"><path d="M16.37 12.73c-.03-2.32 1.9-3.43 1.98-3.48-1.08-1.58-2.76-1.8-3.36-1.82-1.43-.15-2.79.84-3.51.84-.73 0-1.85-.82-3.04-.8-1.56.03-3 .91-3.8 2.31-1.62 2.81-.41 6.97 1.16 9.25.77 1.11 1.69 2.36 2.9 2.31 1.16-.05 1.6-.75 3-.75s1.8.75 3.04.73c1.26-.02 2.05-1.13 2.82-2.25.89-1.3 1.25-2.56 1.27-2.62-.03-.01-2.44-.94-2.46-3.72zM14.67 6.18c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.03.08 2.08-.52 2.71-1.29z"/></svg>
+<div class="cta-store-copy">
+<p class="cta-store-label-sm uppercase font-bold">Coming soon</p>
+<p class="cta-store-label-lg font-extrabold">App Store</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1160,9 +1810,9 @@
 <div class="inline-flex flex-col gap-1 rounded-xl glass-card px-3 py-2 mb-4 max-w-sm">
 <p class="text-[11px] font-semibold text-primary flex items-center gap-1">
 <svg class="ui-icon ui-icon-xs ui-icon-stroke text-[14px]" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-smartphone"/></svg>
-                    Available on Android
+                    Available on Android · App Store soon
                 </p>
-<p class="text-[11px] text-on-surface-variant leading-snug">SMS Auto Import supported on Android devices</p>
+<p class="text-[11px] text-on-surface-variant leading-snug">SMS Auto Import supported on Android devices. iOS is coming soon.</p>
 </div>
 </div>
 <!-- Links -->
@@ -1172,6 +1822,8 @@
 <ul class="space-y-3 text-sm text-secondary">
 <li><a class="hover:text-primary transition-colors" href="#features">Features</a></li>
 <li><a class="hover:text-primary transition-colors" href="#security">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#team">Team</a></li>
+<li><a class="hover:text-primary transition-colors" href="#pricing">Pricing</a></li>
 <li><a class="hover:text-primary transition-colors" href="#faq">FAQ</a></li>
 <li><a class="hover:text-primary transition-colors" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Download App</a></li>
 </ul>
@@ -1199,6 +1851,10 @@
 </div>
 </div>
 </footer>
+<button type="button" id="scroll-top" class="scroll-top" aria-label="Back to top" aria-hidden="true" tabindex="-1">
+<svg class="scroll-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
+<span class="scroll-top-line" aria-hidden="true"></span>
+</button>
 <script>
     // Hero Carousel Implementation
     const carouselWrapper = document.getElementById('mockup-carousel');
@@ -1207,7 +1863,7 @@
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
 
-    let currentIndex = 0;
+    let currentIndex = 1;
     let startX = 0;
     let isDragging = false;
 
@@ -1320,7 +1976,7 @@
     }, observerOptions);
 
     // Apply animations to sections and new showcase items
-    document.querySelectorAll('section, .premium-glass-card, .phone-mockup:not(.mockup-carousel-container .phone-mockup)').forEach(el => {
+    document.querySelectorAll('section, .premium-glass-card').forEach(el => {
         el.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', 'translate-y-12');
         observer.observe(el);
     });
@@ -1350,7 +2006,7 @@
 
     function getNavOffset() {
         const nav = document.querySelector('nav');
-        return nav ? nav.offsetHeight + 8 : 0;
+        return nav ? nav.offsetHeight + 28 : 0;
     }
 
     function smoothScrollToElement(el) {
@@ -1365,6 +2021,32 @@
         }
         smoothScrollTo(0);
     }
+
+    const scrollTopBtn = document.getElementById('scroll-top');
+    let scrollTopFrame = 0;
+
+    function updateScrollTopIndicator() {
+        if (!scrollTopBtn) return;
+        const y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const visible = y > 48;
+        scrollTopBtn.classList.toggle('is-visible', visible);
+        scrollTopBtn.setAttribute('aria-hidden', visible ? 'false' : 'true');
+        scrollTopBtn.tabIndex = visible ? 0 : -1;
+    }
+
+    function requestScrollTopIndicator() {
+        if (scrollTopFrame) return;
+        scrollTopFrame = requestAnimationFrame(() => {
+            scrollTopFrame = 0;
+            updateScrollTopIndicator();
+        });
+    }
+
+    window.addEventListener('scroll', requestScrollTopIndicator, { passive: true });
+    document.addEventListener('scroll', requestScrollTopIndicator, { passive: true, capture: true });
+    window.addEventListener('resize', requestScrollTopIndicator);
+    scrollTopBtn?.addEventListener('click', scrollToTop);
+    updateScrollTopIndicator();
 
     const brandHomeLink = document.getElementById('brand-home-link');
     brandHomeLink?.addEventListener('click', (e) => {
@@ -1429,7 +2111,28 @@
         }
     });
 
+    const teamShowcase = document.getElementById('team-showcase');
+    if (teamShowcase) {
+        const teamItems = teamShowcase.querySelectorAll('[data-member]');
+        const setTeamActive = (id) => {
+            teamItems.forEach((item) => {
+                const match = id && item.dataset.member === id;
+                item.classList.toggle('is-active', Boolean(match));
+                item.classList.toggle('is-dimmed', Boolean(id && !match));
+            });
+        };
+        teamItems.forEach((item) => {
+            item.addEventListener('mouseenter', () => setTeamActive(item.dataset.member));
+            item.addEventListener('mouseleave', () => setTeamActive(null));
+            item.addEventListener('focus', () => setTeamActive(item.dataset.member));
+        });
+        teamShowcase.addEventListener('focusout', (event) => {
+            if (!teamShowcase.contains(event.relatedTarget)) setTeamActive(null);
+        });
+    }
+
     // Initial state
     updateCarousel();
 </script>
+<script src="gradient-wave.js"></script>
 </body></html>
