@@ -480,6 +480,17 @@ class Gradient {
     this.resize();
   }
 
+  setColors(hexes) {
+    const colors = hexes.map((hex) => normalizeColor(parseInt(hex.replace("#", "0x"), 16)));
+    const uniforms = this.mesh.material.uniforms;
+    uniforms.u_baseColor.value = colors[0];
+    colors.slice(1).forEach((color, index) => {
+      const layer = uniforms.u_waveLayers.value[index];
+      if (layer) layer.value.color.value = color;
+    });
+    if (!this.isPlaying) this.minigl.render();
+  }
+
   resize() {
     const width = Math.max(1, this.container.clientWidth);
     const height = Math.max(1, this.container.clientHeight);
@@ -557,13 +568,21 @@ function mountGradientWave(container, options) {
     });
   });
   visibility.observe(container);
+  return gradient;
+}
+
+const LIGHT_WAVE = ["#38bdf8", "#ffffff", "#38bdf8", "#ffffff", "#38bdf8", "#ffffff"];
+const DARK_WAVE = ["#0e4d63", "#07141a", "#17627c", "#0a1e28", "#1a7590", "#0c1a22"];
+
+function waveColorsForTheme() {
+  return document.documentElement.classList.contains("dark") ? DARK_WAVE : LIGHT_WAVE;
 }
 
 const heroWave = document.getElementById("hero-wave");
 if (heroWave) {
   try {
-    mountGradientWave(heroWave, {
-      colors: ["#38bdf8", "#ffffff", "#38bdf8", "#ffffff", "#38bdf8", "#ffffff"],
+    heroWave._gradient = mountGradientWave(heroWave, {
+      colors: waveColorsForTheme(),
       isPlaying: true,
       shadowPower: 8,
       darkenTop: false,

@@ -1,4 +1,11 @@
 <html class="scroll-smooth" lang="en"><head>
+<script>
+      try {
+        var savedTheme = localStorage.getItem("qoondeeye-theme");
+        var preferDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (savedTheme === "dark" || (!savedTheme && preferDark)) document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Smart SMS finance tracking built for Somali users. Track mobile money, bank transactions, budgets, goals, and reports automatically." name="description"/>
@@ -140,11 +147,28 @@
             width: min(1080px, calc(100% - 24px));
             margin-inline: auto;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.82);
+            background: transparent;
             border: 1px solid rgba(192, 199, 205, 0.55);
             box-shadow: 0 16px 40px -22px rgba(0, 51, 69, 0.45);
+            isolation: isolate;
+        }
+        .glass-nav::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .glass-nav > div {
+            position: relative;
+            z-index: 1;
+        }
+        #brand-home-link {
+            flex-shrink: 0;
         }
         .ambient-shadow {
             box-shadow: 0px 20px 50px rgba(0, 51, 69, 0.1);
@@ -153,8 +177,9 @@
             width: 40px;
             height: 40px;
             border-radius: 9px;
-            object-fit: cover;
+            background: url("assets/app-icon.png") center / cover no-repeat;
             flex-shrink: 0;
+            display: block;
         }
         .brand-icon-footer {
             width: 38px;
@@ -520,6 +545,32 @@
             background: #fff;
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
+        .action-showcase {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .action-showcase > * {
+            min-width: 0;
+        }
+        .action-phone {
+            width: min(260px, 100%);
+            max-width: 100%;
+            margin-inline: auto;
+        }
+        .action-phone img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        @media (min-width: 768px) {
+            .action-showcase {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.25rem;
+            }
+        }
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -757,8 +808,68 @@
             transform: translateX(-50%) translateY(0) scale(1);
         }
         @media (min-width: 1024px) {
+            #hero-wave.hero-gradient {
+                box-sizing: border-box;
+                height: 100dvh;
+                max-height: 100dvh;
+                padding-top: 5.25rem;
+                padding-bottom: 0.75rem;
+                display: flex;
+                align-items: center;
+            }
+            .hero-gradient > .relative {
+                width: 100%;
+                min-height: 0;
+                max-height: 100%;
+                align-items: center;
+                gap: clamp(1.25rem, 2.5vw, 2.5rem);
+            }
             .hero-content-column {
-                transform: translateY(-1.75rem);
+                transform: none;
+            }
+            .hero-content-column > .inline-flex {
+                margin-bottom: 0.75rem;
+            }
+            .hero-content-column h1 {
+                font-size: clamp(2.15rem, 3vw, 3.15rem);
+                line-height: 1.08;
+                margin-bottom: 0.75rem;
+            }
+            .hero-content-column > p {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 1.15rem;
+            }
+            .provider-marquee {
+                margin-top: 1rem;
+            }
+            .hero-social-proof-below {
+                margin-top: 0.85rem;
+            }
+            .hero-visual-column {
+                max-height: 100%;
+                justify-content: center;
+            }
+            .mockup-carousel-container {
+                height: min(640px, calc(100dvh - 10.5rem));
+            }
+        }
+        @media (min-width: 1024px) and (max-height: 820px) {
+            .hero-play-btn {
+                padding: 0.6rem 0.8rem;
+            }
+            .hero-play-icon {
+                width: 30px;
+                height: 30px;
+            }
+            .hero-play-label-lg {
+                font-size: 1.125rem;
+            }
+            .provider-logo {
+                height: 28px;
+            }
+            .hero-content-column h1 {
+                font-size: clamp(1.9rem, 2.6vw, 2.5rem);
             }
         }
 
@@ -770,6 +881,11 @@
         }
         @media (min-width: 768px) {
             .phone-slide { width: 300px; }
+        }
+        @media (min-width: 1024px) {
+            .mockup-carousel-container .phone-slide {
+                width: min(300px, calc((100dvh - 11.5rem) * 9 / 19));
+            }
         }
 
         /* Slide states */
@@ -1027,6 +1143,201 @@
         @media (prefers-reduced-motion: reduce) {
             .scroll-top-arrow { animation: none; }
         }
+        .theme-toggle {
+            display: flex;
+            width: 4rem;
+            height: 2rem;
+            padding: 0.25rem;
+            border-radius: 999px;
+            border: 1px solid #e4e4e7;
+            background: #ffffff;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .theme-toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .theme-toggle-knob,
+        .theme-toggle-idle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 999px;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        .theme-toggle-knob {
+            background: #e5e7eb;
+            color: #374151;
+            transform: translateX(2rem);
+        }
+        .theme-toggle-idle {
+            background: transparent;
+            color: #000000;
+            transform: translateX(-2rem);
+        }
+        .theme-toggle.is-dark {
+            background: #09090b;
+            border-color: #27272a;
+        }
+        .theme-toggle.is-dark .theme-toggle-knob {
+            background: #27272a;
+            color: #ffffff;
+            transform: translateX(0);
+        }
+        .theme-toggle.is-dark .theme-toggle-idle {
+            color: #71717a;
+            transform: translateX(0);
+        }
+        .theme-toggle svg {
+            width: 1rem;
+            height: 1rem;
+            display: block;
+        }
+        .theme-toggle-knob .theme-icon-moon,
+        .theme-toggle.is-dark .theme-toggle-knob .theme-icon-sun,
+        .theme-toggle-idle .theme-icon-sun,
+        .theme-toggle.is-dark .theme-toggle-idle .theme-icon-moon {
+            display: none;
+        }
+        html.dark {
+            color-scheme: dark;
+        }
+        html.dark body,
+        html.dark .bg-background {
+            background-color: #0c161c;
+            color: #e7f2f7;
+        }
+        html.dark .bg-white,
+        html.dark .bg-white\/80,
+        html.dark .bg-white\/50,
+        html.dark .bg-surface-container-lowest,
+        html.dark .bg-surface-container,
+        html.dark .bg-surface-container-low,
+        html.dark .bg-surface-container-high,
+        html.dark .mobile-menu-panel {
+            background-color: #15242e;
+        }
+        html.dark .bg-secondary-container {
+            background-color: #1c3d4c;
+        }
+        html.dark .bg-primary\/10,
+        html.dark .bg-primary\/5 {
+            background-color: rgba(143, 208, 234, 0.14);
+        }
+        html.dark .bg-white.text-primary {
+            background-color: #d7eef8;
+            color: #0c161c;
+        }
+        html.dark .hover\:bg-white:hover {
+            background-color: #1c303b;
+        }
+        html.dark .text-primary,
+        html.dark .text-on-surface,
+        html.dark .team-name,
+        html.dark .team-row.is-active .team-name {
+            color: #e8f4fb;
+        }
+        html.dark .text-secondary,
+        html.dark .text-on-surface-variant,
+        html.dark .text-on-primary-fixed-variant,
+        html.dark .provider-marquee-label,
+        html.dark .team-role {
+            color: #a9bcc8;
+        }
+        html.dark h1,
+        html.dark h2,
+        html.dark h3,
+        html.dark h4,
+        html.dark summary {
+            color: #e8f4fb;
+        }
+        html.dark .text-surface-tint {
+            color: #8fd0ea;
+        }
+        html.dark .bg-primary {
+            background-color: #1a7590;
+        }
+        html.dark .glass-nav {
+            background: transparent;
+            border-color: rgba(120, 148, 162, 0.35);
+            box-shadow: 0 16px 40px -22px rgba(0, 0, 0, 0.7);
+        }
+        html.dark .glass-nav::before {
+            background: rgba(12, 22, 28, 0.82);
+        }
+        html.dark .glass-card,
+        html.dark .premium-glass-card,
+        html.dark .privacy-card {
+            background: rgba(21, 36, 46, 0.82);
+            border-color: rgba(150, 206, 235, 0.16);
+            color: #e7f2f7;
+        }
+        html.dark .premium-glass-card:hover,
+        html.dark .privacy-card:hover {
+            background: rgba(28, 48, 59, 0.92);
+        }
+        html.dark .hero-gradient {
+            background: radial-gradient(circle at 50% 0%, #0e3344 0%, #0c161c 60%);
+        }
+        html.dark .hero-content-column > .inline-flex {
+            background-color: rgba(12, 28, 36, 0.72);
+            color: #e8f4fb;
+        }
+        html.dark .hero-content-column h1,
+        html.dark .hero-content-column h1 span,
+        html.dark .hero-content-column > p,
+        html.dark .hero-social-proof > p {
+            color: #e8f4fb;
+        }
+        html.dark .hero-store-soon,
+        html.dark .cta-store-soon {
+            background: rgba(18, 36, 46, 0.92);
+            color: #e8f4fb;
+            border-color: rgba(150, 206, 235, 0.28);
+        }
+        html.dark .store-soon-pill {
+            background: #e8f4fb;
+            color: #003345;
+        }
+        html.dark .challenge-shell,
+        html.dark .privacy-shell,
+        html.dark .footer-shell,
+        html.dark .cta-final-card,
+        html.dark .premium-section-bg {
+            background: linear-gradient(165deg, #102029 0%, #0d1b24 55%, #0c161c 100%);
+            color: #e7f2f7;
+            border-color: rgba(150, 206, 235, 0.12);
+        }
+        html.dark .pricing-grid,
+        html.dark .pricing-featured,
+        html.dark .pricing-featured::after {
+            background: #15242e;
+            border-color: rgba(150, 206, 235, 0.16);
+        }
+        html.dark .pricing-plus {
+            color: #8fd0ea;
+            background: #0c161c;
+        }
+        html.dark .footer-wordmark,
+        html.dark .team-marker,
+        html.dark .team-row.is-active .team-marker {
+            color: #e8f4fb;
+        }
+        html.dark .team-row.is-active .team-marker {
+            background: #8fd0ea;
+        }
+        html.dark .team-marker {
+            background: rgba(143, 208, 234, 0.28);
+        }
+        html.dark .border-outline-variant\/30,
+        html.dark .border-outline-variant\/40 {
+            border-color: rgba(150, 206, 235, 0.16);
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
@@ -1107,9 +1418,22 @@
 <nav class="glass-nav">
 <div class="flex justify-between items-center h-16 px-3 sm:px-5">
 <a class="font-headline-sm text-headline-sm font-extrabold text-primary flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer" id="brand-home-link" role="button" tabindex="0" aria-label="Back to top">
-<img alt="" class="brand-icon-header" decoding="async" height="40" src="assets/app-icon.png" width="40"/>
+<span class="brand-icon-header" aria-hidden="true"></span>
             Qoondeeye
         </a>
+<div class="flex items-center gap-3 sm:gap-4">
+<button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+<span class="theme-toggle-row">
+<span class="theme-toggle-knob" aria-hidden="true">
+<svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</span>
+<span class="theme-toggle-idle" aria-hidden="true">
+<svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</span>
+</span>
+</button>
 <div class="hidden md:flex gap-stack-lg items-center">
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#features">Features</a>
 <a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="#security">Privacy</a>
@@ -1122,6 +1446,7 @@
 <button aria-controls="mobile-menu-panel" aria-expanded="false" aria-label="Open menu" class="text-primary p-1 -mr-1" id="mobile-menu-toggle" type="button">
 <svg id="mobile-menu-icon-menu" class="ui-icon ui-icon-2xl ui-icon-stroke text-primary" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-menu"/></svg><svg id="mobile-menu-icon-close" class="ui-icon ui-icon-2xl ui-icon-stroke text-primary hidden" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-x"/></svg>
 </button>
+</div>
 </div>
 </div>
 </nav>
@@ -1366,30 +1691,30 @@
 </div>
 </section>
 <!-- See Qoondeeye in Action -->
-<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white overflow-hidden">
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white">
 <div class="max-w-container-max mx-auto">
 <div class="text-center mb-16">
 <h2 class="font-headline-md text-primary mb-4">See Qoondeeye in Action</h2>
 <p class="text-secondary font-body-lg max-w-2xl mx-auto">Experience the beautiful, intuitive interface designed for the modern Somali lifestyle.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="action-showcase">
 <div class="flex flex-col items-center">
-<div class="phone-mockup w-full max-w-[280px] ambient-shadow mb-8 hover:scale-105 transition-transform duration-500">
-<img alt="Home Screen" class="w-full h-full object-cover" decoding="async" src="assets/smart-dashboard.png"/>
+<div class="phone-mockup action-phone ambient-shadow mb-8 hover:scale-105 transition-transform duration-500">
+<img alt="Home Screen" decoding="async" src="assets/smart-dashboard.png"/>
 </div>
 <h3 class="font-bold text-xl text-primary mb-2">Smart Dashboard</h3>
 <p class="text-secondary text-center text-sm px-4">Your money overview at a glance, with balance, income, expenses, and recent transactions.</p>
 </div>
 <div class="flex flex-col items-center">
-<div class="phone-mockup w-full max-w-[280px] ambient-shadow mb-8 hover:scale-105 transition-transform duration-500">
-<img alt="Transactions" class="w-full h-full object-cover" decoding="async" src="assets/Transaction-history.png"/>
+<div class="phone-mockup action-phone ambient-shadow mb-8 hover:scale-105 transition-transform duration-500">
+<img alt="Transactions" decoding="async" src="assets/Transaction-history.png"/>
 </div>
 <h3 class="font-bold text-xl text-primary mb-2">Transaction History</h3>
 <p class="text-secondary text-center text-sm px-4">Search, filter, and review your transactions automatically organized from SMS.</p>
 </div>
 <div class="flex flex-col items-center">
-<div class="phone-mockup w-full max-w-[280px] ambient-shadow mb-8 hover:scale-105 transition-transform duration-500">
-<img alt="Reports" class="w-full h-full object-cover" decoding="async" src="assets/Reports-screen.jpg"/>
+<div class="phone-mockup action-phone ambient-shadow mb-8 hover:scale-105 transition-transform duration-500">
+<img alt="Reports" decoding="async" src="assets/Reports-screen.jpg"/>
 </div>
 <h3 class="font-bold text-xl text-primary mb-2">Visual Insights</h3>
 <p class="text-secondary text-center text-sm px-4">Clear charts help you understand where your money goes over time.</p>
@@ -1586,15 +1911,15 @@
 <div class="team-showcase" id="team-showcase">
 <div class="team-photos" aria-label="Team photos">
 <div class="team-col team-col-1">
-<button class="team-photo" type="button" data-member="mohamed" aria-label="Mohamed Abdifitah, Founder and Developer">
+<button class="team-photo" type="button" data-member="mohamed" aria-label="Mohamed Abdifitah, Developer">
 <img alt="Mohamed Abdifitah" src="assets/Mohamed.png" width="155" height="165"/>
 </button>
-<button class="team-photo" type="button" data-member="sadaq" aria-label="Sadaq Elmi, Co-Founder">
+<button class="team-photo" type="button" data-member="sadaq" aria-label="Sadaq Elmi, Developer">
 <img alt="Sadaq Elmi" src="assets/Sadaq.png" width="155" height="165"/>
 </button>
 </div>
 <div class="team-col team-col-2">
-<button class="team-photo" type="button" data-member="mahdi" aria-label="Mahdi Abdulkadir, Co-Founder">
+<button class="team-photo" type="button" data-member="mahdi" aria-label="Mahdi Abdulkadir, Developer">
 <img alt="Mahdi Abdulkadir" src="assets/Mahdi.png" width="172" height="182"/>
 </button>
 </div>
@@ -1605,19 +1930,26 @@
 </div>
 </div>
 <div class="team-list">
-<div class="team-row" data-member="mohamed" tabindex="0">
-<div class="team-row-main">
-<span class="team-marker" aria-hidden="true"></span>
-<span class="team-name">Mohamed Abdifitah</span>
-</div>
-<p class="team-role">Founder &amp; Developer</p>
-</div>
 <div class="team-row" data-member="mahdi" tabindex="0">
 <div class="team-row-main">
 <span class="team-marker" aria-hidden="true"></span>
 <span class="team-name">Mahdi Abdulkadir</span>
 </div>
-<p class="team-role">Co-Founder</p>
+<p class="team-role">Developer</p>
+</div>
+<div class="team-row" data-member="mohamed" tabindex="0">
+<div class="team-row-main">
+<span class="team-marker" aria-hidden="true"></span>
+<span class="team-name">Mohamed Abdifitah</span>
+</div>
+<p class="team-role">Developer</p>
+</div>
+<div class="team-row" data-member="sadaq" tabindex="0">
+<div class="team-row-main">
+<span class="team-marker" aria-hidden="true"></span>
+<span class="team-name">Sadaq Elmi</span>
+</div>
+<p class="team-role">Developer</p>
 </div>
 <div class="team-row" data-member="shuceyb" tabindex="0">
 <div class="team-row-main">
@@ -1625,13 +1957,6 @@
 <span class="team-name">Shuceyb Mohamed</span>
 </div>
 <p class="team-role">Designer</p>
-</div>
-<div class="team-row" data-member="sadaq" tabindex="0">
-<div class="team-row-main">
-<span class="team-marker" aria-hidden="true"></span>
-<span class="team-name">Sadaq Elmi</span>
-</div>
-<p class="team-role">Co-Founder</p>
 </div>
 </div>
 </div>
@@ -1672,14 +1997,14 @@
 <h3 class="font-semibold text-xl text-primary leading-none">Yearly</h3>
 <div class="flex items-center gap-2">
 <span class="text-sm text-secondary line-through">$12</span>
-<span class="bg-primary text-white text-[11px] font-bold px-2.5 py-1 rounded-full">58% off</span>
+<span class="bg-primary text-white text-[11px] font-bold px-2.5 py-1 rounded-full">50% off</span>
 </div>
 </div>
 <p class="text-secondary text-sm mt-2">Unlock savings with an annual commitment.</p>
 <div class="mt-10">
 <p class="text-secondary flex items-end">
 <span class="text-xl">$</span>
-<span class="text-primary text-5xl font-extrabold tracking-tight leading-none">5</span>
+<span class="text-primary text-5xl font-extrabold tracking-tight leading-none">6</span>
 <span class="text-lg mb-1">/year</span>
 </p>
 <a class="mt-5 w-full inline-flex items-center justify-center rounded-full bg-primary text-white font-bold px-6 py-3 hover:shadow-lg hover:shadow-primary/20 transition-all" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Get Started Now</a>
@@ -1711,7 +2036,7 @@
 <svg class="ui-icon ui-icon-lg ui-icon-stroke transition-transform group-open:rotate-180 bg-primary/5 p-2 rounded-full" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
 </summary>
 <p class="mt-6 text-secondary text-body-md leading-relaxed border-t border-outline-variant/20 pt-6">
-                        Monthly is $0.50, down from $1.50, or $5 for the year after 58% off $12. Download is free, and any paid features are explained before you choose them.
+                        Monthly is $0.50, down from $1.50, or $6 for the year after 50% off $12. Download is free, and any paid features are explained before you choose them.
                     </p>
 </details>
 <details class="group p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/30 hover:shadow-lg transition-all duration-300">
@@ -1856,6 +2181,29 @@
 <span class="scroll-top-line" aria-hidden="true"></span>
 </button>
 <script>
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function applyTheme(isDark, persist) {
+        document.documentElement.classList.toggle("dark", isDark);
+        themeToggle?.classList.toggle("is-dark", isDark);
+        themeToggle?.setAttribute("aria-pressed", String(isDark));
+        themeToggle?.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        if (themeMeta) themeMeta.setAttribute("content", isDark ? "#0c161c" : "#003345");
+        const wave = document.getElementById("hero-wave");
+        const colors = isDark
+            ? ["#0e4d63", "#07141a", "#17627c", "#0a1e28", "#1a7590", "#0c1a22"]
+            : ["#38bdf8", "#ffffff", "#38bdf8", "#ffffff", "#38bdf8", "#ffffff"];
+        wave?._gradient?.setColors(colors);
+        if (!persist) return;
+        try { localStorage.setItem("qoondeeye-theme", isDark ? "dark" : "light"); } catch (e) {}
+    }
+
+    applyTheme(document.documentElement.classList.contains("dark"));
+    themeToggle?.addEventListener("click", () => {
+        applyTheme(!document.documentElement.classList.contains("dark"), true);
+    });
+
     // Hero Carousel Implementation
     const carouselWrapper = document.getElementById('mockup-carousel');
     const slides = Array.from(carouselWrapper.querySelectorAll('.phone-slide'));
