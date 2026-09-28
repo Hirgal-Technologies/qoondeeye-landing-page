@@ -1138,6 +1138,13 @@
         .scroll-top:hover {
             background: #2a657e;
         }
+        html.dark .scroll-top {
+            background: #1a7590;
+            color: #ffffff;
+        }
+        html.dark .scroll-top:hover {
+            background: #2286a4;
+        }
         @keyframes scroll-top-jump {
             0%, 100% { transform: translateY(2px); }
             45% { transform: translateY(-5px); }
@@ -2193,7 +2200,7 @@
 </div>
 </div>
 </footer>
-<button type="button" id="scroll-top" class="scroll-top" aria-label="Back to top" aria-hidden="true" tabindex="-1">
+<button type="button" id="scroll-top" class="scroll-top" aria-label="Scroll to top" aria-hidden="true" tabindex="-1">
 <svg class="scroll-top-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg>
 <span class="scroll-top-line" aria-hidden="true"></span>
 </button>
@@ -2390,10 +2397,19 @@
     const scrollTopBtn = document.getElementById('scroll-top');
     let scrollTopFrame = 0;
 
+    function pageScrollY() {
+        const scroller = document.scrollingElement;
+        return Math.max(
+            window.pageYOffset || 0,
+            document.documentElement.scrollTop || 0,
+            document.body.scrollTop || 0,
+            scroller ? scroller.scrollTop : 0
+        );
+    }
+
     function updateScrollTopIndicator() {
         if (!scrollTopBtn) return;
-        const y = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        const visible = y > 48;
+        const visible = pageScrollY() > 48;
         scrollTopBtn.classList.toggle('is-visible', visible);
         scrollTopBtn.setAttribute('aria-hidden', visible ? 'false' : 'true');
         scrollTopBtn.tabIndex = visible ? 0 : -1;
@@ -2409,6 +2425,7 @@
 
     window.addEventListener('scroll', requestScrollTopIndicator, { passive: true });
     document.addEventListener('scroll', requestScrollTopIndicator, { passive: true, capture: true });
+    document.body.addEventListener('scroll', requestScrollTopIndicator, { passive: true });
     window.addEventListener('resize', requestScrollTopIndicator);
     scrollTopBtn?.addEventListener('click', scrollToTop);
     updateScrollTopIndicator();
