@@ -1203,7 +1203,7 @@
             transform: translateX(0);
         }
         .theme-toggle.is-dark .theme-toggle-idle {
-            color: #71717a;
+            color: #f4f4f5;
             transform: translateX(0);
         }
         .theme-toggle svg {
@@ -1212,10 +1212,16 @@
             display: block;
         }
         .theme-toggle-knob .theme-icon-moon,
+        .theme-toggle-idle .theme-icon-sun {
+            display: none;
+        }
         .theme-toggle.is-dark .theme-toggle-knob .theme-icon-sun,
-        .theme-toggle-idle .theme-icon-sun,
         .theme-toggle.is-dark .theme-toggle-idle .theme-icon-moon {
             display: none;
+        }
+        .theme-toggle.is-dark .theme-toggle-knob .theme-icon-moon,
+        .theme-toggle.is-dark .theme-toggle-idle .theme-icon-sun {
+            display: block;
         }
         html.dark {
             color-scheme: dark;
