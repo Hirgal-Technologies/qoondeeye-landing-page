@@ -168,6 +168,8 @@
             z-index: 1;
         }
         #brand-home-link {
+            display: flex;
+            align-items: center;
             flex-shrink: 0;
         }
         .ambient-shadow {
@@ -366,11 +368,11 @@
             position: relative;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 0.75rem;
+            gap: 1rem;
             background: #ffffff;
             border: 1px solid rgba(192, 199, 205, 0.55);
             border-radius: 1.75rem;
-            padding: 1rem;
+            padding: 1.25rem;
             box-shadow: 0 24px 60px -36px rgba(0, 51, 69, 0.35);
         }
         .pricing-plus {
@@ -413,7 +415,11 @@
             to { transform: rotate(1turn); }
         }
         @media (min-width: 768px) {
-            .pricing-grid { grid-template-columns: 1fr 1fr; }
+            .pricing-grid {
+                grid-template-columns: 1fr 1fr;
+                padding: 1.5rem;
+                gap: 1.25rem;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             .pricing-featured::before { animation: none; }
@@ -1229,7 +1235,8 @@
         html.dark .bg-primary\/5 {
             background-color: rgba(143, 208, 234, 0.14);
         }
-        html.dark .bg-white.text-primary {
+        html.dark .bg-white.text-primary,
+        html.dark .bg-white.text-primary .ui-icon {
             background-color: #d7eef8;
             color: #0c161c;
         }
@@ -1294,6 +1301,10 @@
         html.dark .hero-social-proof > p {
             color: #e8f4fb;
         }
+        html.dark .avatar-group-circle {
+            color: #0c161c;
+            border-color: rgba(12, 22, 28, 0.28);
+        }
         html.dark .hero-store-soon,
         html.dark .cta-store-soon {
             background: rgba(18, 36, 46, 0.92);
@@ -1322,6 +1333,12 @@
         html.dark .pricing-plus {
             color: #8fd0ea;
             background: #0c161c;
+        }
+        html.dark .pricing-outline {
+            border-color: rgba(143, 208, 234, 0.55);
+        }
+        html.dark .pricing-outline:hover {
+            background-color: rgba(143, 208, 234, 0.12);
         }
         html.dark .footer-wordmark,
         html.dark .team-marker,
@@ -1417,7 +1434,7 @@
 <!-- Top Navigation Bar -->
 <nav class="glass-nav">
 <div class="flex justify-between items-center h-16 px-3 sm:px-5">
-<a class="font-headline-sm text-headline-sm font-extrabold text-primary flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer" id="brand-home-link" role="button" tabindex="0" aria-label="Back to top">
+<a href="/" class="font-headline-sm text-headline-sm font-extrabold text-primary flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer" id="brand-home-link" aria-label="Qoondeeye home">
 <span class="brand-icon-header" aria-hidden="true"></span>
             Qoondeeye
         </a>
@@ -1963,7 +1980,7 @@
 </div>
 </section>
 <section class="pricing-shell py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="pricing">
-<div class="max-w-3xl mx-auto">
+<div class="max-w-5xl mx-auto">
 <div class="text-center max-w-xl mx-auto mb-12">
 <span class="bg-primary/10 text-primary px-4 py-1.5 rounded-full font-label-md text-[12px] uppercase tracking-widest mb-6 inline-block">Pricing</span>
 <h2 class="font-display-lg-mobile md:font-headline-md text-primary mb-4">Pricing based on your success</h2>
@@ -1974,9 +1991,9 @@
 <svg class="pricing-plus pricing-plus-tr ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
 <svg class="pricing-plus pricing-plus-bl ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
 <svg class="pricing-plus pricing-plus-br ui-icon-stroke" fill="none" stroke="currentColor" aria-hidden="true"><use href="#icon-plus"/></svg>
-<div class="px-4 pt-5 pb-4">
+<div class="px-6 py-8 md:px-8 md:py-10">
 <div class="flex items-center justify-between gap-3">
-<h3 class="font-semibold text-xl text-primary leading-none">Monthly</h3>
+<h3 class="font-semibold text-2xl text-primary leading-none">Monthly</h3>
 <div class="flex items-center gap-2">
 <span class="text-sm text-secondary line-through">$1.50</span>
 <span class="bg-secondary-container text-primary text-[11px] font-bold px-2.5 py-1 rounded-full">67% off</span>
@@ -1986,15 +2003,15 @@
 <div class="mt-10">
 <p class="text-secondary flex items-end gap-0.5">
 <span class="text-xl">$</span>
-<span class="text-primary text-5xl font-extrabold tracking-tight leading-none">0.50</span>
+<span class="text-primary text-6xl md:text-7xl font-extrabold tracking-tight leading-none">0.50</span>
 <span class="text-lg mb-1">/month</span>
 </p>
-<a class="mt-5 w-full inline-flex items-center justify-center rounded-full border border-primary/20 text-primary font-bold px-6 py-3 hover:bg-primary/5 transition-colors" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Start Your Journey</a>
+<a class="pricing-outline mt-5 w-full inline-flex items-center justify-center rounded-full border border-primary/20 text-primary font-bold px-6 py-3 hover:bg-primary/5 transition-colors" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Start Your Journey</a>
 </div>
 </div>
-<div class="pricing-featured px-4 pt-5 pb-4">
+<div class="pricing-featured px-6 py-8 md:px-8 md:py-10">
 <div class="flex items-center justify-between gap-3">
-<h3 class="font-semibold text-xl text-primary leading-none">Yearly</h3>
+<h3 class="font-semibold text-2xl text-primary leading-none">Yearly</h3>
 <div class="flex items-center gap-2">
 <span class="text-sm text-secondary line-through">$12</span>
 <span class="bg-primary text-white text-[11px] font-bold px-2.5 py-1 rounded-full">50% off</span>
@@ -2004,7 +2021,7 @@
 <div class="mt-10">
 <p class="text-secondary flex items-end">
 <span class="text-xl">$</span>
-<span class="text-primary text-5xl font-extrabold tracking-tight leading-none">6</span>
+<span class="text-primary text-6xl md:text-7xl font-extrabold tracking-tight leading-none">6</span>
 <span class="text-lg mb-1">/year</span>
 </p>
 <a class="mt-5 w-full inline-flex items-center justify-center rounded-full bg-primary text-white font-bold px-6 py-3 hover:shadow-lg hover:shadow-primary/20 transition-all" href="https://play.google.com/store/apps/details?id=com.mohamed_99.qoondeeye" target="_blank" rel="noopener noreferrer">Get Started Now</a>
